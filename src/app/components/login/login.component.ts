@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, NgForm, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/auth/login.service';
+import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { LoginRequest } from '../../interfaces/login-requets';
 
 
@@ -13,25 +14,37 @@ import { LoginRequest } from '../../interfaces/login-requets';
 })
 export class LoginComponent implements OnInit {
 
+  formLoginUsuario: FormGroup = this.formBuilder.group({
+    email:['', [Validators.required]],
+    password: ['', [Validators.required]],
+  });
+
   loginError:string="";
   loginForm: LoginRequest = {
     email:'',
     password:''
   };
 
-  constructor(private formBuider:FormBuilder, private router:Router, private loginService: LoginService) { }
+  constructor(private formBuilder:FormBuilder, private router:Router, private loginService: LoginService, private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
   }
 
-  login(form:NgForm){
-    console.log('form value', form.value);
+  // login(form:NgForm){
+  //   console.log('form value', form.value);
 
-    this.loginService.login(this.loginForm)
-      .subscribe(response => {
-        this.router.navigateByUrl('/header');
-    })
+  //   this.loginService.login(this.loginForm)
+  //     .subscribe(response => {
+  //       this.router.navigateByUrl('/header');
+  //   })
 
+  // }
+
+  async login(){
+    const response = await this.usuarioService.login(this.formLoginUsuario.value);
+    console.log(response);
+    // alert(response)
+    // this.router.navigate(['login']);
   }
 
 }

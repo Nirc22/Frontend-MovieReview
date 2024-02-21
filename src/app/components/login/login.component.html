@@ -1,4 +1,28 @@
-<div class="container py-5">
+<div id="contenedor">
+  <form class="form" [formGroup]="formLoginUsuario" (ngSubmit)="login()"> <!--(ngSubmit)="crearPersona()"-->
+    <div class="formulario">
+      <div class="input">
+      <h1>Login</h1>
+    </div>
+      <div class="input">
+        <label>Email</label>
+        <input type="email" class="fomr-control" formControlName="email">
+      </div>
+      <div class="input">
+        <label>Password</label>
+        <input type="password" class="fomr-control" formControlName="password">
+      </div>
+      <div class="input">
+      <!-- <input type="submit" value="Crear"> -->
+      <button type="submit">Iniciar Sesión</button>
+    </div>
+
+    </div>
+  </form>
+</div>
+
+
+<!-- <div class="container py-5">
   <form class="mx-auto" style="max-width: 25rem;" #form="ngForm" (ngSubmit)="login(form)">
 
     <h1 class="mb-5 text-center">Inicio de sesión</h1>
@@ -16,4 +40,4 @@
       <button class="btn btn-lg btn-primary">Ingresar</button>
     </div>
   </form>
-</div>
+</div> -->

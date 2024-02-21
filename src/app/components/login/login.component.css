@@ -1,0 +1,48 @@
+.input{
+  display: flex;
+  flex-direction: column;
+  padding: 15px 10px;
+}
+
+#contenedor{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.form{
+  height: 100%;
+  /* background-color: blue; */
+  background-color: #d9c9a5;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formulario{
+  border-radius: 3px;
+  background-color: #d02941;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+
+  width: 250px;
+  padding: 10px 40px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+button{
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: black;
+  color: white;
+}
+input{
+  border: none;
+  border-radius: 3px;
+}

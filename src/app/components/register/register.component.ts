@@ -25,14 +25,20 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  crearUsuario(){
-    const usuario = this.formCrearUsuario.value
-    this.usuarioService.crearUsuario(usuario)
-    .subscribe((data:any) =>{
-      this.usuario = data;
-      console.log("Usuario registradoooooo");
-      // this.router.navigate(['dashboard']);
-    })
+  // crearUsuario(){
+  //   const usuario = this.formCrearUsuario.value
+  //   this.usuarioService.crearUsuario(usuario)
+  //   .subscribe((data:any) =>{
+  //     this.usuario = data;
+  //     console.log("Usuario registradoooooo");
+  //     // this.router.navigate(['dashboard']);
+  //   })
+  // }
+
+  async crearUsuario(){
+    const response = await this.usuarioService.crearUsuario(this.formCrearUsuario.value);
+    console.log(response);
+    this.router.navigate(['login']);
   }
 
 }
