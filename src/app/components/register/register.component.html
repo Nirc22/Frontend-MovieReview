@@ -1,0 +1,24 @@
+<form [formGroup]="formCrearUsuario" (ngSubmit)="crearUsuario()"> <!--(ngSubmit)="crearPersona()"-->
+  <fieldset>
+    <legend>Datos del usuario</legend>
+    <div>
+      <label>Nombre:</label>
+      <input type="text" class="fomr-control" formControlName="nombre">
+    </div>
+    <div>
+      <label>Apellidos:</label>
+      <input type="text" class="fomr-control" formControlName="apellidos">
+    </div>
+    <div>
+      <label>Email:</label>
+      <input type="email" class="fomr-control" formControlName="email">
+    </div>
+    <div>
+      <label>Password:</label>
+      <input type="password" class="fomr-control" formControlName="password">
+    </div>
+    <!-- <input type="submit" value="Crear"> -->
+    <button type="submit">Crear</button>
+
+  </fieldset>
+</form>

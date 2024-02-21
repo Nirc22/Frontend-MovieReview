@@ -4,7 +4,7 @@ export interface Usuario {
   apellidos:string,
   email:string,
   password: string,
-  rol:{
+  rol?:{
     id: Number,
     nombre: string,
   };
