@@ -1,24 +1,33 @@
-<form [formGroup]="formCrearUsuario" (ngSubmit)="crearUsuario()"> <!--(ngSubmit)="crearPersona()"-->
-  <fieldset>
-    <legend>Datos del usuario</legend>
-    <div>
-      <label>Nombre:</label>
-      <input type="text" class="fomr-control" formControlName="nombre">
+<div id="componente">
+  <form class="form" [formGroup]="formCrearUsuario" (ngSubmit)="crearUsuario()"> <!--(ngSubmit)="crearPersona()"-->
+    <div class="formulario">
+      <div class="input">
+        <h1>Registro</h1>
+      </div>
+      <div class="input">
+        <label>Nombre</label>
+        <input type="text" class="fomr-control" formControlName="nombre">
+      </div>
+      <div class="input">
+        <label>Apellidos</label>
+        <input type="text" class="fomr-control" formControlName="apellidos">
+      </div>
+      <div class="input">
+        <label>Email</label>
+        <input type="email" class="fomr-control" formControlName="email">
+      </div>
+      <div class="input">
+        <label>Password</label>
+        <input type="password" class="fomr-control" formControlName="password">
+      </div>
+      <div class="button">
+        <!-- <input type="submit" value="Crear"> -->
+        <button type="submit">Crear</button>
+      </div>
+      <div class="input" *ngIf="responseService && !responseService.ok">{{ responseService.msg }}</div>
+      <div class="input">
+        <p>¿Ya tienes una cuenta? <a href="login">Login</a></p>
+      </div>
     </div>
-    <div>
-      <label>Apellidos:</label>
-      <input type="text" class="fomr-control" formControlName="apellidos">
-    </div>
-    <div>
-      <label>Email:</label>
-      <input type="email" class="fomr-control" formControlName="email">
-    </div>
-    <div>
-      <label>Password:</label>
-      <input type="password" class="fomr-control" formControlName="password">
-    </div>
-    <!-- <input type="submit" value="Crear"> -->
-    <button type="submit">Crear</button>
-
-  </fieldset>
-</form>
+  </form>
+</div>

@@ -14,14 +14,14 @@ import { LoginRequest } from '../../interfaces/login-requets';
 })
 export class LoginComponent implements OnInit {
 
-  errorMessage:string="";
+  errorMessage:any;
 
   formLoginUsuario: FormGroup = this.formBuilder.group({
-    email:['', [Validators.required]],
+    email:['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
   });
 
-  loginError:string="";
+  responseService:any;
   loginForm: LoginRequest = {
     email:'',
     password:''
@@ -44,11 +44,9 @@ export class LoginComponent implements OnInit {
 
   async login(){
     const response = await this.usuarioService.login(this.formLoginUsuario.value);
-    // console.log("Errorrrr",this.errorMessage);
     console.log("Respuesta",response);
-
-    // alert(response)
-    // this.router.navigate(['login']);
+    this.responseService = response;
+    // alert(response.error)
   }
 
 }

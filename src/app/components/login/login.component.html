@@ -12,11 +12,14 @@
         <label>Password</label>
         <input type="password" class="fomr-control" formControlName="password">
       </div>
-      <div class="input">
+      <div class="button">
         <!-- <input type="submit" value="Crear"> -->
         <button type="submit">Iniciar Sesión</button>
       </div>
-      <div *ngIf="errorMessage">{{ errorMessage }}></div>
+      <div class="input" *ngIf="responseService && !responseService.ok">{{ responseService.msg }}</div>
+      <div class="input">
+        <p>¿No tienes una cuenta? <a href="register">Registro</a></p>
+      </div>
 
     </div>
   </form>

@@ -11,16 +11,18 @@ import { Usuario } from 'src/app/interfaces/usuario';
 })
 export class RegisterComponent implements OnInit {
 
-  usuario:Usuario[] = [];
+  usuario: Usuario[] = [];
 
   formCrearUsuario: FormGroup = this.forBuilder.group({
-    nombre: ['',[Validators.required]],
-    apellidos: ['',[Validators.required]],
-    email:['',[Validators.required]],
-    password:['',[Validators.required]],
+    nombre: ['', [Validators.required]],
+    apellidos: ['', [Validators.required]],
+    email: ['', [Validators.required]],
+    password: ['', [Validators.required]],
   });
 
-  constructor(private forBuilder:FormBuilder, private usuarioService:UsuarioService, private router:Router) { }
+  responseService:any;
+
+  constructor(private forBuilder: FormBuilder, private usuarioService: UsuarioService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -35,10 +37,13 @@ export class RegisterComponent implements OnInit {
   //   })
   // }
 
-  async crearUsuario(){
+  async crearUsuario() {
     const response = await this.usuarioService.crearUsuario(this.formCrearUsuario.value);
-    console.log(response);
-    this.router.navigate(['login']);
+    console.log(response.msg);
+    this.responseService = response;
+    if (response.ok === true) {
+      this.router.navigate(['login']);
+    }
   }
 
 }
