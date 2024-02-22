@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
 
   async crearUsuario() {
     const response = await this.usuarioService.crearUsuario(this.formCrearUsuario.value);
-    console.log(response.msg);
+    console.log("Respuestaaaaa",response.msg);
     this.responseService = response;
     if (response.ok === true) {
       this.router.navigate(['login']);

@@ -46,6 +46,9 @@ export class LoginComponent implements OnInit {
     const response = await this.usuarioService.login(this.formLoginUsuario.value);
     console.log("Respuesta",response);
     this.responseService = response;
+    if(!response.error){
+      localStorage.setItem('token', response.token);
+    }
     // alert(response.error)
   }
 
