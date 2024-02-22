@@ -14,6 +14,8 @@ import { LoginRequest } from '../../interfaces/login-requets';
 })
 export class LoginComponent implements OnInit {
 
+  errorMessage:string="";
+
   formLoginUsuario: FormGroup = this.formBuilder.group({
     email:['', [Validators.required]],
     password: ['', [Validators.required]],
@@ -42,7 +44,9 @@ export class LoginComponent implements OnInit {
 
   async login(){
     const response = await this.usuarioService.login(this.formLoginUsuario.value);
-    console.log(response);
+    // console.log("Errorrrr",this.errorMessage);
+    console.log("Respuesta",response);
+
     // alert(response)
     // this.router.navigate(['login']);
   }

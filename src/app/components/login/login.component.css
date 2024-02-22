@@ -1,7 +1,12 @@
 .input{
   display: flex;
   flex-direction: column;
-  padding: 15px 10px;
+  padding: 10px 5px;
+  color: #fef2f2;
+  font-size: 15px;
+}
+label{
+  padding: 0px 0px 10px 0px;
 }
 
 #contenedor{
@@ -15,7 +20,7 @@
 .form{
   height: 100%;
   /* background-color: blue; */
-  background-color: #d9c9a5;
+  background-color: #fef2f2;
 
   display: flex;
   justify-content: center;
@@ -24,13 +29,13 @@
 
 .formulario{
   border-radius: 3px;
-  background-color: #d02941;
+  background-color: #470a16;
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
 
-  width: 250px;
+  width: 200px;
   padding: 10px 40px;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
 }
@@ -39,10 +44,22 @@ button{
   padding: 10px;
   border: none;
   border-radius: 3px;
-  background-color: black;
-  color: white;
+  background-color: #961b34;
+  color: #fef2f2;
+  font-size: 15px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+
+
 }
+
+button:hover{
+  background-color: #d02941;
+  cursor: pointer;
+}
+
 input{
+  padding: 10px;
   border: none;
   border-radius: 3px;
+  background-color: #fef2f2;
 }

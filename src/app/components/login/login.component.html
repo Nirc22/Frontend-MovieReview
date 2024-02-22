@@ -2,8 +2,8 @@
   <form class="form" [formGroup]="formLoginUsuario" (ngSubmit)="login()"> <!--(ngSubmit)="crearPersona()"-->
     <div class="formulario">
       <div class="input">
-      <h1>Login</h1>
-    </div>
+        <h1>Login</h1>
+      </div>
       <div class="input">
         <label>Email</label>
         <input type="email" class="fomr-control" formControlName="email">
@@ -13,9 +13,10 @@
         <input type="password" class="fomr-control" formControlName="password">
       </div>
       <div class="input">
-      <!-- <input type="submit" value="Crear"> -->
-      <button type="submit">Iniciar Sesión</button>
-    </div>
+        <!-- <input type="submit" value="Crear"> -->
+        <button type="submit">Iniciar Sesión</button>
+      </div>
+      <div *ngIf="errorMessage">{{ errorMessage }}></div>
 
     </div>
   </form>
