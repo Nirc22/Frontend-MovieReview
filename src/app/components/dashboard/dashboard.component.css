@@ -1,0 +1,10 @@
+#componente{
+  display: flex;
+  flex-direction: row;
+}
+
+.contenedor{
+  display: flex;
+  flex-direction: row;
+
+}

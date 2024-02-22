@@ -1,0 +1,14 @@
+<div id="componente">
+<div *ngFor="let pelicula of peliculas">
+<h1>{{pelicula.nombre}}</h1>
+<p>{{pelicula.director.nombre}} {{pelicula.director.apellido}}</p>
+<div *ngFor="let actor of pelicula.actores">
+  <p>{{actor.actor.nombre}} {{actor.actor.apellido}}</p>
+</div>
+<p>{{pelicula.anio}}</p>
+<div *ngFor="let genero of pelicula.generos">
+  <p>{{genero.genero.nombre}}</p>
+</div>
+<p>{{pelicula.calificacion.calificacion}}</p>
+</div>
+</div>
