@@ -1,5 +1,5 @@
 <div id="componente">
-<div *ngFor="let pelicula of peliculas">
+<div class="contenedor" *ngFor="let pelicula of peliculas">
 <h1>{{pelicula.nombre}}</h1>
 <p>{{pelicula.director.nombre}} {{pelicula.director.apellido}}</p>
 <div *ngFor="let actor of pelicula.actores">
