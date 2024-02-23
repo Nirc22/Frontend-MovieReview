@@ -1,14 +1,23 @@
-<div id="componente">
-<div class="contenedor" *ngFor="let pelicula of peliculas">
-<h1>{{pelicula.nombre}}</h1>
-<p>{{pelicula.director.nombre}} {{pelicula.director.apellido}}</p>
+<div id="contenedor">
+  <div class="peliculas">
+    <div class="elementos" *ngFor="let pelicula of peliculas">
+      <h1>{{pelicula.nombre}}</h1>
+      <img src="../../../assets/pulpFiction.jpg">
+      <!--Retirado por exceso de info-->
+      <p>Calificación: {{pelicula.calificacion.calificacion}}</p>
+      <div class="button">
+        <button>Detalles</button>
+        <button>Calificar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <p>{{pelicula.director.nombre}} {{pelicula.director.apellido}}</p>
 <div *ngFor="let actor of pelicula.actores">
   <p>{{actor.actor.nombre}} {{actor.actor.apellido}}</p>
 </div>
 <p>{{pelicula.anio}}</p>
 <div *ngFor="let genero of pelicula.generos">
   <p>{{genero.genero.nombre}}</p>
-</div>
-<p>{{pelicula.calificacion.calificacion}}</p>
-</div>
-</div>
+</div> -->
