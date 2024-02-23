@@ -1,5 +1,5 @@
 export interface Pelicula {
-  id: string,
+  _id: string,
   nombre: string,
   director: {
     id: string,

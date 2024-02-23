@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, firstValueFrom, throwError } from 'rxjs';
 import { Pelicula } from 'src/app/interfaces/pelicula';
 import { environment } from 'src/environments/environment';
 
@@ -16,6 +16,14 @@ export class PeliculaService {
     return this.http.get<Pelicula>(environment.urlApi+'pelicula/').pipe(
       catchError(this.handleError)
     )
+  }
+
+  getPeliculaId(_id:any):Observable<Pelicula>{
+    return this.http.get<Pelicula>(environment.urlApi+"pelicula/getById/"+_id)//terminar de hacer
+  }
+
+  getPeliculaById(formValue:any){
+    return firstValueFrom(this.http.get<any>(environment.urlApi+"pelicula/getById/", formValue))
   }
 
   private handleError(error:HttpErrorResponse){

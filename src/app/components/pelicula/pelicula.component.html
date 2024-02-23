@@ -1,0 +1,14 @@
+<div>
+  <h1>{{pelicula.nombre}}</h1>
+  <img src="../../../assets/pulpFiction.jpg" alt="">
+  <p>{{pelicula.director.nombre}} {{pelicula.director.apellido}}</p>
+  <div *ngFor="let actor of pelicula.actores">
+    <p>{{actor.actor.nombre}} {{actor.actor.apellido}}</p>
+  </div>
+  <p>{{pelicula.anio}}</p>
+  <div *ngFor="let genero of pelicula.generos">
+    <p>{{genero.genero.nombre}}</p>
+  </div>
+  <p>Calificación: {{pelicula.calificacion.calificacion}}</p>
+
+</div>

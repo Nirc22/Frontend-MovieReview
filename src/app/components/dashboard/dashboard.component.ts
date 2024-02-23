@@ -3,6 +3,9 @@ import { PeliculaService } from 'src/app/services/pelicula/pelicula.service';
 import { environment } from 'src/environments/environment';
 import { Pelicula } from 'src/app/interfaces/pelicula';
 
+import { Router } from '@angular/router';
+
+
 
 
 @Component({
@@ -13,10 +16,11 @@ import { Pelicula } from 'src/app/interfaces/pelicula';
 export class DashboardComponent implements OnInit {
 
   peliculas:Pelicula[]=[];
+  pelicula:Pelicula[]=[];
   peliculasJSON:any;
 
 
-  constructor(private peliculaService:PeliculaService) { }
+  constructor(private peliculaService:PeliculaService, private router:Router) { }
 
   ngOnInit(): void {
     this.obtenerPeliculas();
@@ -27,10 +31,13 @@ export class DashboardComponent implements OnInit {
     .subscribe((peliculas: any)=>{
       this.peliculas = peliculas.peliculas;
       console.log(peliculas.peliculas)
-      // const peliculasJSON = JSON.stringify(this.peliculas);
-      // console.log(peliculasJSON.peliculas)
-
     });
+  }
+
+  detalles(pelicula:Pelicula):void{
+    console.log(pelicula)
+    localStorage.setItem("_id", pelicula._id.toString());
+    this.router.navigate(['pelicula']);
   }
 
 }

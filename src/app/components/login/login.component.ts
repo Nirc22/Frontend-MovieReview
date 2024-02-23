@@ -48,6 +48,8 @@ export class LoginComponent implements OnInit {
     this.responseService = response;
     if(!response.error){
       localStorage.setItem('token', response.token);
+      this.router.navigate(['dashboard']);
+
     }
     // alert(response.error)
   }
