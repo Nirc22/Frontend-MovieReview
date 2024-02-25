@@ -1,5 +1,5 @@
 export interface Director {
-  id: string,
+  _id: string,
   nombre: string,
   apellido: string
 }

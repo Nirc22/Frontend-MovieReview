@@ -3,6 +3,9 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, firstValueFrom, throwError } from 'rxjs';
 import { Pelicula } from 'src/app/interfaces/pelicula';
 import { environment } from 'src/environments/environment';
+import { Director } from 'src/app/interfaces/director';
+import { Actor } from 'src/app/interfaces/actor';
+import { Genero } from 'src/app/interfaces/genero';
 
 
 @Injectable({
@@ -22,8 +25,24 @@ export class PeliculaService {
     return this.http.get<Pelicula>(environment.urlApi+"pelicula/getById/"+_id)//terminar de hacer
   }
 
-  getPeliculaById(formValue:any){
-    return firstValueFrom(this.http.get<any>(environment.urlApi+"pelicula/getById/", formValue))
+  // getPeliculaById(formValue:any){
+  //   return firstValueFrom(this.http.get<any>(environment.urlApi+"pelicula/getById/", formValue))
+  // }
+
+  crearPelicula(pelicula:Pelicula){
+    return this.http.post<Pelicula>(environment.urlApi+"pelicula/crearPelicula", pelicula)
+  }
+
+  getDirectores(formValue:any):Observable<Director>{
+    return this.http.get<Director>(environment.urlApi+"director/get")
+  }
+
+  getActores(formValue:any):Observable<Actor>{
+    return this.http.get<Actor>(environment.urlApi+"actor/")
+  }
+
+  getGeneros(formValue:any):Observable<Genero>{
+    return this.http.get<Genero>(environment.urlApi+"genero/get")
   }
 
   private handleError(error:HttpErrorResponse){

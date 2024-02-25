@@ -6,6 +6,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PeliculaComponent } from './components/pelicula/pelicula.component';
+import { CrearPeliculaComponent } from './components/crear-pelicula/crear-pelicula.component';
 // import { AuthGuard } from './helpers/auth.guard';
 
 
@@ -33,7 +34,12 @@ const routes: Routes = [
   {
     path: 'pelicula',
     component: PeliculaComponent
+  },
+  {
+    path: 'crearPelicula',
+    component: CrearPeliculaComponent
   }
+
 ];
 
 @NgModule({

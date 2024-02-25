@@ -1,0 +1,41 @@
+<div id="componente">
+  <form class="form" [formGroup]="formCrearPelicula" (ngSubmit)="crearPelicula()"> <!--(ngSubmit)="crearPersona()"-->
+    <div class="formulario">
+      <div class="input">
+        <h1>Registro Pelicula</h1>
+      </div>
+      <div class="input">
+        <label for="dsnombre" class="form-label">Nombre</label>
+        <input type="text" class="fomr-control" id="nombre" formControlName="nombre">
+      </div>
+      <div class="input">
+        <label>Director</label>
+        <select class="form-control" id="director" formControlName="director">
+          <option *ngFor="let director of directores" value={{director._id}}>{{director.nombre}} {{director.apellido}}</option>
+        </select>
+      </div>
+      <div class="input" formGroupName="actores">
+        <label>Actores</label>
+        <select class="form-control" id="actor" formControlName="actor">
+          <option *ngFor="let actor of actores" value={{actor._id}}>{{actor.nombre}} {{actor.apellido}}</option>
+        </select>
+      </div>
+      <div class="input">
+        <label>Año</label>
+        <input type="date" class="fomr-control" formControlName="anio">
+      </div>
+      <div class="input" formGroupName="generos">
+        <label>Generos</label>
+        <select class="form-control" id="genero" formControlName="genero">
+          <option *ngFor="let genero of generos" value={{genero._id}}>{{genero.nombre}}</option>
+        </select>
+      </div>
+      <div class="button">
+
+        <!-- <input type="submit" value="Crear"> -->
+        <button type="submit">Crear</button>
+      </div>
+      <!-- <div class="input" *ngIf="responseService && !responseService.ok">{{ responseService.msg }}</div> -->
+    </div>
+  </form>
+</div>

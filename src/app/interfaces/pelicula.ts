@@ -2,13 +2,13 @@ export interface Pelicula {
   _id: string,
   nombre: string,
   director: {
-    id: string,
+    _id: string,
     nombre: string,
     apellido: string,
   },
   actores:[{
     actor:{
-      id: string,
+      _id: string,
       nombre: string,
       apellido: string
     }
@@ -16,7 +16,7 @@ export interface Pelicula {
   anio:Date,
   generos:[{
     genero:{
-      id: string,
+      _id: string,
       nombre: string,
     }
   }],
@@ -26,6 +26,10 @@ export interface Pelicula {
     numReviews: Number,
     sumReviews: Number,
     calificacion: Number
-  }
+  },
+  // imagenPelicula:{
+  //   type: string,
+  //   require: true
+  // }
 
 }

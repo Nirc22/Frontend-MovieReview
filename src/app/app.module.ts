@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PeliculaComponent } from './components/pelicula/pelicula.component';
+import { CrearPeliculaComponent } from './components/crear-pelicula/crear-pelicula.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PeliculaComponent } from './components/pelicula/pelicula.component';
     HeaderComponent,
     RegisterComponent,
     DashboardComponent,
-    PeliculaComponent
+    PeliculaComponent,
+    CrearPeliculaComponent
   ],
   imports: [
     BrowserModule,
