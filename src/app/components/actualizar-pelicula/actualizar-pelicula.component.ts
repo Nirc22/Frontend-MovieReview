@@ -9,21 +9,19 @@ import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-crear-pelicula',
-  templateUrl: './crear-pelicula.component.html',
-  styleUrls: ['./crear-pelicula.component.css']
+  selector: 'app-actualizar-pelicula',
+  templateUrl: './actualizar-pelicula.component.html',
+  styleUrls: ['./actualizar-pelicula.component.css']
 })
-export class CrearPeliculaComponent implements OnInit {
+export class ActualizarPeliculaComponent implements OnInit {
 
-
-  file: any;
+  pelicula: Pelicula[] = [];
   directores: Director[] = [];
   actores: Actor[] = [];
   generos: Genero[] = [];
-  peliculaCrear: Pelicula[] = [];
+  // peliculaCrear: Pelicula[] = [];
 
-
-  formCrearPelicula: FormGroup = this.forBuilder.group({
+  formActualizarPelicula: FormGroup = this.forBuilder.group({
     nombre: ['', [Validators.required]],
     director: ['', [Validators.required]],
     actores: new FormGroup({
@@ -33,57 +31,53 @@ export class CrearPeliculaComponent implements OnInit {
     generos: new FormGroup({
       genero: new FormControl(''),
     }),
-    calificacion: new FormGroup({
-      id: new FormControl(''),
-    }),
-    imagenPelicula: ['', [Validators.required]],
+    // calificacion: new FormGroup({
+    //   id: new FormControl(''),
+    // }),
+    // imagenPelicula: ['', [Validators.required]],
   })
+
 
   constructor(private forBuilder: FormBuilder, private peliculaService: PeliculaService, private router:Router) { }
 
   ngOnInit(): void {
-
-    // console.log('HOlaaaaaaaaa',this.formCrearPelicula.get('director._id')!.value);
+    this.getPeliculaById();
     this.getDirectores();
     this.getActores();
     this.getGeneros();
   }
 
-  //sirve para validar los formularios
   get director_id() {
-    return this.formCrearPelicula.get('director') as FormControl;
+    return this.formActualizarPelicula.get('director') as FormControl;
   }
 
   get actor_id() {
-    return this.formCrearPelicula.get('actor') as FormControl;
+    return this.formActualizarPelicula.get('actor') as FormControl;
   }
 
-  capturarImagen(event: any) {
-    const file = event.target.files[0]; // Obtén el archivo seleccionado
-    this.formCrearPelicula.patchValue({
-      imagenPelicula: file, // Actualiza el valor del campo imagenPelicula
-    });
+  getPeliculaById() {
+    let _id = (localStorage.getItem("_id"));
+    this.peliculaService.getPeliculaId(_id)
+      .subscribe((data: any) => {
+        this.pelicula = data.pelicula;
+        console.log("Holaaaaa",this.pelicula)
+        this.formActualizarPelicula.setValue({
+          nombre: data.pelicula.nombre,
+          director: data.pelicula.director._id,
+          actores: {actor: data.pelicula.actores[0].actor._id},
+          anio: data.pelicula.anio.substring(0,10),//para sacar la fecha en formato yyyy-MM-dd
+          generos: {genero: data.pelicula.generos[0].genero._id},
+        })
+      })
 
-    // if(event.target.files && event.target.files.length > 0){
-    //   const imagenCapturada = event.target.files[0];
-    //   if(imagenCapturada.type.includes('image')){
-    //     const reader = new FileReader()
-    //     reader.readAsDataURL(imagenCapturada);
-    //     // reader.onload = function load(){
-
-    //     // }
-    //     this.file = imagenCapturada;
-
-    //   }else{
-    //     console.log('Hubo un error');
-    //   }
-    // }
   }
-  registrarPelicula() {
-    console.log(this.formCrearPelicula.value)
-    const peliculaData = this.formCrearPelicula.value;
 
-    this.peliculaService.crearPelicula(peliculaData).subscribe(
+  actualizarPelicula() {
+    console.log(this.formActualizarPelicula.value)
+    const _id = localStorage.getItem('_id');
+    const peliculaData = this.formActualizarPelicula.value;
+
+    this.peliculaService.actualizarPelicula(peliculaData, _id).subscribe(
       (response) => {
         console.log('Película creada:', response);
         localStorage.setItem("_id", response.uid.toString());
@@ -96,21 +90,7 @@ export class CrearPeliculaComponent implements OnInit {
     );
   }
 
-  crearPelicula() {
-    console.log(this.formCrearPelicula.value)
-    const pelicula = this.formCrearPelicula.value;
 
-    this.peliculaService.crearPelicula(pelicula)
-      .subscribe((data: any) => {
-        this.peliculaCrear = data;
-
-        console.log("Pelicula registrada");
-        // alert("Pelicula creada")
-      })
-
-    console.log(this.formCrearPelicula.value);
-    // console.log('HOlaaaaaaaaa', this.director_id.value)
-  }
 
   getDirectores() {
     this.peliculaService.getDirectores(environment.urlApi)
@@ -135,4 +115,5 @@ export class CrearPeliculaComponent implements OnInit {
         console.log("Generos", this.generos)
       });
   }
+
 }

@@ -17,6 +17,7 @@ import { CrearPeliculaComponent } from './components/crear-pelicula/crear-pelicu
 import { ActualiarImagenComponent } from './components/actualiar-imagen/actualiar-imagen.component';
 import { PeliculaAdminComponent } from './components/pelicula-admin/pelicula-admin.component';
 import { DasboardAdminComponent } from './components/dasboard-admin/dasboard-admin.component';
+import { ActualizarPeliculaComponent } from './components/actualizar-pelicula/actualizar-pelicula.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DasboardAdminComponent } from './components/dasboard-admin/dasboard-adm
     CrearPeliculaComponent,
     ActualiarImagenComponent,
     PeliculaAdminComponent,
-    DasboardAdminComponent
+    DasboardAdminComponent,
+    ActualizarPeliculaComponent
   ],
   imports: [
     BrowserModule,

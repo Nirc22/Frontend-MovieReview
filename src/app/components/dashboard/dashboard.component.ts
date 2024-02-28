@@ -5,9 +5,6 @@ import { Pelicula } from 'src/app/interfaces/pelicula';
 
 import { Router } from '@angular/router';
 
-
-
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -27,7 +24,7 @@ export class DashboardComponent implements OnInit {
   }
 
   obtenerPeliculas(){
-    this.peliculaService.getPeliculas(environment.urlApi+"pacientes")
+    this.peliculaService.getPeliculas(environment.urlApi)
     .subscribe((peliculas: any)=>{
       this.peliculas = peliculas.peliculas;
       console.log(peliculas.peliculas)

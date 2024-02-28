@@ -32,4 +32,8 @@ export class PeliculaAdminComponent implements OnInit {
 
   }
 
+  actualizarPelicula():void{
+    this.router.navigate(['actualizarPelicula'])
+  }
+
 }

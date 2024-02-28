@@ -1,6 +1,6 @@
 <div>
   <h1>{{pelicula.nombre}}</h1>
-  <img src="../../../assets/pulpFiction.jpg" alt="">
+  <img src="http://localhost:4001/{{pelicula.imagenPelicula}}" alt="">
   <p>{{pelicula.director.nombre}} {{pelicula.director.apellido}}</p>
   <div *ngFor="let actor of pelicula.actores">
     <p>{{actor.actor.nombre}} {{actor.actor.apellido}}</p>
@@ -11,5 +11,5 @@
   </div>
   <p>Calificación: {{pelicula.calificacion.calificacion}}</p>
   <button (click)="actualizarImagen()">Actualizar Imagen</button>
-
+  <button (click)="actualizarPelicula()">Actualizar Pelicula</button>
 </div>

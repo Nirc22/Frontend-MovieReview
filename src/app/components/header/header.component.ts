@@ -56,14 +56,6 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  prueba(){
-    const form = this.formCrearPelicula;
-    this.peliculaService.prueba(form.value.nombre, this.file)
-
-
-
-
-  }
 
   obtenerPeliculas(){
     this.peliculaService.getPeliculas(environment.urlApi+"pacientes")
