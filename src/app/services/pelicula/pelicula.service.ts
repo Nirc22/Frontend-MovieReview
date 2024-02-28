@@ -29,8 +29,33 @@ export class PeliculaService {
   //   return firstValueFrom(this.http.get<any>(environment.urlApi+"pelicula/getById/", formValue))
   // }
 
-  crearPelicula(pelicula:Pelicula){
-    return this.http.post<Pelicula>(environment.urlApi+"pelicula/crearPelicula", pelicula)
+  crearPelicula(pelicula:any){
+    return this.http.post<any>(environment.urlApi+"pelicula/crearPelicula", pelicula)
+  }
+
+  actualizarImagen(form:any, _id:any){
+    return this.http.post<any>(environment.urlApi+"pelicula/imagen/"+_id, form)
+  }
+
+  prueba(nombre:string, imagenPelicula:File){
+    const form = new FormData()
+    form.append('nombre', nombre);
+    form.append('imagenPelicula', imagenPelicula, 'form-data');
+    return this.http.post<Object>('environment.urlApi+"pelicula/crearPelicula', form)
+
+  }
+
+  crear(nombre:string, director:string, actores:string, anio:string, generos:string, imagenPelicula:File){
+    console.log("holaaaaaaaaaaaaaa")
+    const form = new FormData()
+    form.append('nombre', nombre);
+    form.append('director', director);
+    form.append('actores', actores);
+    form.append('anio', anio);
+    form.append('generos', generos);
+    form.append('imagenPelicula', imagenPelicula, 'form-data');
+    console.log(form)
+    return this.http.post<Object>('environment.urlApi+"pelicula/crearPelicula', form)
   }
 
   getDirectores(formValue:any):Observable<Director>{

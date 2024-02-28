@@ -1,5 +1,5 @@
 <div id="componente">
-  <form class="form" [formGroup]="formCrearPelicula" (ngSubmit)="crearPelicula()"> <!--(ngSubmit)="crearPersona()"-->
+  <form class="form" id="contact-form" enctype="multipart/form-data" [formGroup]="formCrearPelicula" (ngSubmit)="registrarPelicula()"> <!--(ngSubmit)="crearPersona()"-->
     <div class="formulario">
       <div class="input">
         <h1>Registro Pelicula</h1>
@@ -33,7 +33,7 @@
       <div class="button">
 
         <!-- <input type="submit" value="Crear"> -->
-        <button type="submit">Crear</button>
+        <button type="submit" formenctype="multipart/form-data" value="Submit as Multipart/form-data">Crear</button>
       </div>
       <!-- <div class="input" *ngIf="responseService && !responseService.ok">{{ responseService.msg }}</div> -->
     </div>

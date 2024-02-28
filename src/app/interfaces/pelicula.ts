@@ -27,9 +27,9 @@ export interface Pelicula {
     sumReviews: Number,
     calificacion: Number
   },
-  // imagenPelicula:{
-  //   type: string,
-  //   require: true
-  // }
+  imagenPelicula:{
+    type: string,
+    // require: true
+  }
 
 }

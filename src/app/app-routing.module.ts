@@ -7,6 +7,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PeliculaComponent } from './components/pelicula/pelicula.component';
 import { CrearPeliculaComponent } from './components/crear-pelicula/crear-pelicula.component';
+import { ActualiarImagenComponent } from './components/actualiar-imagen/actualiar-imagen.component';
+import { PeliculaAdminComponent } from './components/pelicula-admin/pelicula-admin.component';
 // import { AuthGuard } from './helpers/auth.guard';
 
 
@@ -38,6 +40,14 @@ const routes: Routes = [
   {
     path: 'crearPelicula',
     component: CrearPeliculaComponent
+  },
+  {
+    path: 'actualizarImangen',
+    component: ActualiarImagenComponent
+  },
+  {
+    path: 'peliculaAdmin',
+    component: PeliculaAdminComponent
   }
 
 ];

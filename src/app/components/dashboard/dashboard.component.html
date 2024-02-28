@@ -2,7 +2,7 @@
   <div class="peliculas">
     <div class="elementos" *ngFor="let pelicula of peliculas">
       <h1>{{pelicula.nombre}}</h1>
-      <img src="../../../assets/pulpFiction.jpg">
+      <img src="http://localhost:4001/{{pelicula.imagenPelicula}}">
       <!--Retirado por exceso de info-->
       <p>Calificación: {{pelicula.calificacion.calificacion}}</p>
       <div class="button">

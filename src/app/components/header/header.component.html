@@ -1,1 +1,17 @@
-<p>header works!</p>
+<form class="form" enctype="multipart/form-data" [formGroup]="formCrearPelicula" (ngSubmit)="prueba()"> <!--(ngSubmit)="crearPersona()"-->
+
+  <div class="input">
+    <label for="dsnombre" class="form-label">Nombre</label>
+    <input type="text" class="fomr-control" id="nombre" formControlName="nombre">
+  </div>
+  <div class="input">
+    <label>Imagen</label>
+    <input type="file" class="fomr-control" id="imagenPelicula" formControlName="imagenPelicula" (change)="capturarImagen($event)">
+    <!--(change)="capturarImagen($event)"-->
+  </div>
+  <div class="button">
+
+    <!-- <input type="submit" value="Crear"> -->
+    <button type="submit">Crear</button>
+  </div>
+</form>
