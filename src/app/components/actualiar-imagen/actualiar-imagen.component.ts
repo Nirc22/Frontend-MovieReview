@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, NgForm, FormControl, FormGroup, Validators } from '@angular/forms'
+import { Router } from '@angular/router';
 import { PeliculaService } from 'src/app/services/pelicula/pelicula.service';
 
 
@@ -16,7 +17,7 @@ export class ActualiarImagenComponent implements OnInit {
     imagenPelicula: ['', [Validators.required]],
   })
 
-  constructor(private formBuilder: FormBuilder, private peliculaService:PeliculaService) { }
+  constructor(private formBuilder: FormBuilder, private peliculaService: PeliculaService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -34,9 +35,10 @@ export class ActualiarImagenComponent implements OnInit {
     const formData = new FormData();
     formData.append('imagenPelicula', imagenData.imagenPelicula);
     this.peliculaService.actualizarImagen(formData, _id)
-    .subscribe(response => {
-      console.log('Respuesta del servidor:', response.data);
-    })
+      .subscribe(response => {
+        this.router.navigate(['peliculaAdmin']);
+        console.log('Respuesta del servidor:', response.data);
+      })
 
 
   }
