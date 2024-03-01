@@ -79,8 +79,8 @@ export class ActualizarPeliculaComponent implements OnInit {
 
     this.peliculaService.actualizarPelicula(peliculaData, _id).subscribe(
       (response) => {
-        console.log('Película creada:', response);
-        localStorage.setItem("_id", response.uid.toString());
+        console.log('Película Actualizada:', response);
+        // localStorage.setItem("_id", response.uid.toString());
         this.router.navigate(['peliculaAdmin']);
         // Realiza acciones adicionales después de crear la película
       },
