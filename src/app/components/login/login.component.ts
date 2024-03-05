@@ -49,9 +49,13 @@ export class LoginComponent implements OnInit {
 
       this.decodedToken = jwtDecode(token!)
       console.log(this.decodedToken.rol)
-      // this.decodedToken = this.loginService.decodeToken(token!)
-      // console.log("Tokeee",this.decodedToken.rol)
-      this.router.navigate(['dashboard']);
+      if(this.decodedToken.rol === 'Admin'){
+        this.router.navigate(['dashboardAdmin']);
+      }else{
+        this.router.navigate(['dashboard']);
+      }
+
+
 
     }
     // alert(response.error)

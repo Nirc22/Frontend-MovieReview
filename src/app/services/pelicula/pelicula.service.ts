@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Director } from 'src/app/interfaces/director';
 import { Actor } from 'src/app/interfaces/actor';
 import { Genero } from 'src/app/interfaces/genero';
+import { MovieReview } from 'src/app/interfaces/movie-review';
 
 
 @Injectable({
@@ -52,6 +53,11 @@ export class PeliculaService {
   getGeneros(formValue:any):Observable<Genero>{
     return this.http.get<Genero>(environment.urlApi+"genero/get")
   }
+
+  calificar(calificacion:any){
+    return this.http.post<any>(environment.urlApi+"usuarioReview/create", calificacion)
+  }
+
 
   private handleError(error:HttpErrorResponse){
     if(error.status===0){

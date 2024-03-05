@@ -18,6 +18,7 @@ import { PeliculaAdminComponent } from './components/pelicula-admin/pelicula-adm
 import { DasboardAdminComponent } from './components/dasboard-admin/dasboard-admin.component';
 import { ActualizarPeliculaComponent } from './components/actualizar-pelicula/actualizar-pelicula.component';
 import { AuthInterceptor } from './helpers/auth.interceptor';
+import { CalificarComponent } from './components/calificar/calificar.component';
 
 
 
@@ -34,7 +35,8 @@ import { AuthInterceptor } from './helpers/auth.interceptor';
     ActualiarImagenComponent,
     PeliculaAdminComponent,
     DasboardAdminComponent,
-    ActualizarPeliculaComponent
+    ActualizarPeliculaComponent,
+    CalificarComponent
   ],
   imports: [
     BrowserModule,

@@ -37,4 +37,10 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['pelicula']);
   }
 
+  calificar(pelicula:Pelicula):void{
+    console.log(pelicula)
+    localStorage.setItem("_id", pelicula._id.toString());
+    this.router.navigate(['calificacion']);
+  }
+
 }

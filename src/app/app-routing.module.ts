@@ -12,6 +12,8 @@ import { ActualiarImagenComponent } from './components/actualiar-imagen/actualia
 import { PeliculaAdminComponent } from './components/pelicula-admin/pelicula-admin.component';
 import { ActualizarPeliculaComponent } from './components/actualizar-pelicula/actualizar-pelicula.component';
 import { AuthGuard } from './helpers/auth.guard';
+import { RolGuard } from './helpers/rol.guard';
+import { CalificarComponent } from './components/calificar/calificar.component';
 
 
 
@@ -31,43 +33,50 @@ const routes: Routes = [
     path: 'register',
     component: RegisterComponent
   },
-  {
-    path: 'dashboard',
-    component: DashboardComponent
-  },
+
   {
     path: 'pelicula',
-    component: PeliculaComponent
+    component: PeliculaComponent,
+  },
+  {
+    path: 'calificacion',
+    component: CalificarComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'crearPelicula',
     component: CrearPeliculaComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, RolGuard],
+    // canLoad: [AuthGuard]
 
   },
   {
     path: 'actualizarImangen',
     component: ActualiarImagenComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, RolGuard]
 
   },
   {
     path: 'peliculaAdmin',
     component: PeliculaAdminComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, RolGuard]
 
   },
   {
     path: 'dashboardAdmin',
     component: DasboardAdminComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, RolGuard]
   },
   {
     path: 'actualizarPelicula',
     component: ActualizarPeliculaComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, RolGuard]
 
-  }
+  },
+  {
+    path: '**',
+    component: DashboardComponent
+  },
 
 ];
 
