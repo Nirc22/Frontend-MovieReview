@@ -10,13 +10,15 @@
           <h3>Director</h3>
           <p>{{pelicula.director.nombre}} {{pelicula.director.apellido}}</p>
         </div>
-        <div class="elementos" *ngFor="let actor of pelicula.actores">
+        <div class="elementos">
           <h3>Reparto</h3>
-          <p>{{actor.actor.nombre}} {{actor.actor.apellido}}</p>
+          <div class="elementos" *ngFor="let actor of pelicula.actores">
+            <p>{{actor.actor.nombre}} {{actor.actor.apellido}}</p>
+          </div>
         </div>
         <div class="elementos">
           <h3>Fecha estreno</h3>
-          <p>{{pelicula.anio}}</p>
+          <p>{{pelicula.anio | date:'yyyy'}}</p>
         </div>
         <div class="elementos" *ngFor="let genero of pelicula.generos">
           <h3>Generos</h3>

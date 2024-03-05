@@ -5,7 +5,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 import { Axios } from 'axios';
 
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -18,6 +17,10 @@ import { ActualiarImagenComponent } from './components/actualiar-imagen/actualia
 import { PeliculaAdminComponent } from './components/pelicula-admin/pelicula-admin.component';
 import { DasboardAdminComponent } from './components/dasboard-admin/dasboard-admin.component';
 import { ActualizarPeliculaComponent } from './components/actualizar-pelicula/actualizar-pelicula.component';
+import { AuthInterceptor } from './helpers/auth.interceptor';
+
+
+
 
 @NgModule({
   declarations: [
@@ -40,7 +43,11 @@ import { ActualizarPeliculaComponent } from './components/actualizar-pelicula/ac
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

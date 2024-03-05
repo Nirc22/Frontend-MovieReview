@@ -16,7 +16,7 @@
       </div>
       <div class="elementos">
         <h3>Fecha estreno</h3>
-        <p>{{pelicula.anio}}</p>
+        <p>{{pelicula.anio | date:'yyyy-MM-dd'}}</p>
       </div>
       <div class="elementos" *ngFor="let genero of pelicula.generos">
         <h3>Generos</h3>

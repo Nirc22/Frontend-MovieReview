@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { LoginService } from '../../services/auth/login.service';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { LoginRequest } from '../../interfaces/login-requets';
+import { jwtDecode } from "jwt-decode";
 
 
 @Component({
@@ -15,6 +16,9 @@ import { LoginRequest } from '../../interfaces/login-requets';
 export class LoginComponent implements OnInit {
 
   errorMessage:any;
+
+  decodedToken:any;
+  token:any;
 
   formLoginUsuario: FormGroup = this.formBuilder.group({
     email:['', [Validators.required, Validators.email]],
@@ -32,15 +36,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // login(form:NgForm){
-  //   console.log('form value', form.value);
-
-  //   this.loginService.login(this.loginForm)
-  //     .subscribe(response => {
-  //       this.router.navigateByUrl('/header');
-  //   })
-
-  // }
 
   async login(){
     const response = await this.usuarioService.login(this.formLoginUsuario.value);
@@ -48,6 +43,14 @@ export class LoginComponent implements OnInit {
     this.responseService = response;
     if(!response.error){
       localStorage.setItem('token', response.token);
+      localStorage.setItem('rol', response.rol)
+      const token = localStorage.getItem('token');
+      console.log("Holaaaaa",token)
+
+      this.decodedToken = jwtDecode(token!)
+      console.log(this.decodedToken.rol)
+      // this.decodedToken = this.loginService.decodeToken(token!)
+      // console.log("Tokeee",this.decodedToken.rol)
       this.router.navigate(['dashboard']);
 
     }

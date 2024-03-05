@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpRequest, HttpResponse } from '@angular/common/http';
 import { LoginRequest } from 'src/app/interfaces/login-requets';
-import { Observable, catchError, throwError, BehaviorSubject, tap, map } from 'rxjs';
+import { Observable, catchError, throwError, BehaviorSubject, tap, map, observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -15,6 +15,8 @@ export class LoginService {
   constructor(private http: HttpClient) {
     this.currentUserLoginOn= new BehaviorSubject<boolean>(sessionStorage.getItem("token")!= null);
     this.currentUserData=new BehaviorSubject<String>(sessionStorage.getItem("token") || "")
+
+
   }
 
 
@@ -29,6 +31,7 @@ export class LoginService {
       const token = bearerToken.replace('Bearer', '');
 
       localStorage.setItem('token', token);
+
       return body;
 
     }))
@@ -36,6 +39,15 @@ export class LoginService {
 
   getToken(){
     return localStorage.getItem('token');
+  }
+
+  decodeToken (token:string){
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayLoad = decodeURIComponent(atob(base64).split('').map((c)=>{
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+    }).join(''));
+    return JSON.parse(jsonPayLoad);
   }
 
 }

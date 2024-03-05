@@ -75,7 +75,11 @@ export class ActualizarPeliculaComponent implements OnInit {
   actualizarPelicula() {
     console.log(this.formActualizarPelicula.value)
     const _id = localStorage.getItem('_id');
+
     const peliculaData = this.formActualizarPelicula.value;
+
+    peliculaData.anio = new Date(peliculaData.anio);
+
 
     this.peliculaService.actualizarPelicula(peliculaData, _id).subscribe(
       (response) => {

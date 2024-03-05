@@ -11,13 +11,13 @@ import { CrearPeliculaComponent } from './components/crear-pelicula/crear-pelicu
 import { ActualiarImagenComponent } from './components/actualiar-imagen/actualiar-imagen.component';
 import { PeliculaAdminComponent } from './components/pelicula-admin/pelicula-admin.component';
 import { ActualizarPeliculaComponent } from './components/actualizar-pelicula/actualizar-pelicula.component';
-// import { AuthGuard } from './helpers/auth.guard';
+import { AuthGuard } from './helpers/auth.guard';
 
 
 
 const routes: Routes = [
   {
-    path:'', redirectTo:'/login', pathMatch:'full'
+    path:'', redirectTo:'/dashboard', pathMatch:'full'
   },
   {
     path: 'login',
@@ -41,23 +41,32 @@ const routes: Routes = [
   },
   {
     path: 'crearPelicula',
-    component: CrearPeliculaComponent
+    component: CrearPeliculaComponent,
+    canActivate: [AuthGuard]
+
   },
   {
     path: 'actualizarImangen',
-    component: ActualiarImagenComponent
+    component: ActualiarImagenComponent,
+    canActivate: [AuthGuard]
+
   },
   {
     path: 'peliculaAdmin',
-    component: PeliculaAdminComponent
+    component: PeliculaAdminComponent,
+    canActivate: [AuthGuard]
+
   },
   {
     path: 'dashboardAdmin',
-    component: DasboardAdminComponent
+    component: DasboardAdminComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'actualizarPelicula',
-    component: ActualizarPeliculaComponent
+    component: ActualizarPeliculaComponent,
+    canActivate: [AuthGuard]
+
   }
 
 ];
