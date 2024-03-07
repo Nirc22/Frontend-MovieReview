@@ -1,5 +1,7 @@
-<div id="contenedor">
-  <form class="form" [formGroup]="formCalificacion" (ngSubmit)="calificar()"> <!--(ngSubmit)="crearPersona()"-->
+<ng-container *ngTemplateOutlet="data.template"></ng-container>
+
+<!-- <div id="contenedor">
+  <form class="form" [formGroup]="formCalificacion" (ngSubmit)="calificar()">
     <div class="formulario">
       <div class="input">
         <h1>Calificacion</h1>
@@ -9,11 +11,11 @@
         <input type="calificacion" class="fomr-control" formControlName="calificacion">
       </div>
       <div class="button">
-        <!-- <input type="submit" value="Crear"> -->
+
         <button type="submit">Enviar</button>
       </div>
 
     </div>
   </form>
 
-</div>
+</div> -->

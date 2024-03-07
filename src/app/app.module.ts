@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 import { Axios } from 'axios';
+import { MatDialogModule } from '@angular/material/dialog'
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +20,7 @@ import { DasboardAdminComponent } from './components/dasboard-admin/dasboard-adm
 import { ActualizarPeliculaComponent } from './components/actualizar-pelicula/actualizar-pelicula.component';
 import { AuthInterceptor } from './helpers/auth.interceptor';
 import { CalificarComponent } from './components/calificar/calificar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -44,6 +46,8 @@ import { CalificarComponent } from './components/calificar/calificar.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
   ],
   providers: [
     {

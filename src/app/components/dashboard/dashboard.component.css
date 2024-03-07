@@ -27,7 +27,7 @@
   margin: 20px;
 }
 
-h1 {
+h3 {
   align-self: center;
 }
 
@@ -70,4 +70,9 @@ button:hover{
   background-color: #d02941;
   cursor: pointer;
   transition: 0.3s;
+}
+
+.dialog{
+  background-color: red;
+  /* padding: 100px; */
 }
