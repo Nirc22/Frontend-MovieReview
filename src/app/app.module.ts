@@ -21,6 +21,9 @@ import { ActualizarPeliculaComponent } from './components/actualizar-pelicula/ac
 import { AuthInterceptor } from './helpers/auth.interceptor';
 import { CalificarComponent } from './components/calificar/calificar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+
 
 
 
@@ -38,7 +41,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PeliculaAdminComponent,
     DasboardAdminComponent,
     ActualizarPeliculaComponent,
-    CalificarComponent
+    CalificarComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -48,6 +52,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [
     {

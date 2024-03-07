@@ -1,0 +1,21 @@
+<mat-toolbar>
+  <span *ngIf="token; else componenteAlternativo">{{decodedToken.rol}} {{decodedToken.nombre}}</span>
+
+  <button *ngIf="rol" [routerLink]="['dashboardAdmin']">Peliculas Admin</button>
+  <button *ngIf="!rol" [routerLink]="['dashboard']">Peliculas Usuario</button>
+
+
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
+  <span class="example-spacer"></span>
+  <button *ngIf="!token" [routerLink]="['login']">Login</button>
+  <button *ngIf="token">Log Out</button>
+
+</mat-toolbar>
+
+<ng-template #componenteAlternativo>
+  <!-- Contenido del Componente Alternativo -->
+  <p>Usuario no Logeado</p>
+</ng-template>

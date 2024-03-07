@@ -1,0 +1,35 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #991b1b;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);;
+
+  /* top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0; */
+  /* margin-bottom: 0px; */
+  /* margin-bottom: 300px; */
+}
+
+button{
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #961b34;
+  color: #fef2f2;
+  font-size: 15px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+button:hover{
+  background-color: #d02941;
+  cursor: pointer;
+  transition: 0.3s;
+}
