@@ -18,70 +18,75 @@ import { DialogService } from 'src/app/services/dialog/dialog.service';
 export class DashboardComponent implements OnInit {
 
 
-  peliculaId = localStorage.getItem('_id');
-  token = localStorage.getItem('token');
-  usuario:any = jwtDecode(this.token!)
+  // peliculaId = localStorage.getItem('_id');
+  // token = localStorage.getItem('token');
+  // usuario: any = jwtDecode(this.token!)
 
 
   formCalificacion: FormGroup = this.formBuilder.group({
-    usuario: [this.usuario.uid],
-    pelicula: [this.peliculaId],
-    calificacion:['',[Validators.required]]
+    usuario: [''],
+    pelicula: [''],
+    calificacion: ['', [Validators.required]]
   })
 
 
-  peliculas:Pelicula[]=[];
-  pelicula:Pelicula[]=[];
-  peliculasJSON:any;
+  peliculas: Pelicula[] = [];
+  pelicula: Pelicula[] = [];
+  peliculasJSON: any;
 
 
-  constructor(private peliculaService:PeliculaService, private router:Router, private dialogService: DialogService, private formBuilder: FormBuilder) { }
+  constructor(private peliculaService: PeliculaService, private router: Router, private dialogService: DialogService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.obtenerPeliculas();
   }
 
-  obtenerPeliculas(){
+  obtenerPeliculas() {
     this.peliculaService.getPeliculas(environment.urlApi)
-    .subscribe((peliculas: any)=>{
-      this.peliculas = peliculas.peliculas;
-      console.log(peliculas.peliculas)
-    });
+      .subscribe((peliculas: any) => {
+        this.peliculas = peliculas.peliculas;
+        console.log(peliculas.peliculas)
+      });
   }
 
-  detalles(pelicula:Pelicula):void{
+  detalles(pelicula: Pelicula): void {
     console.log(pelicula)
     localStorage.setItem("_id", pelicula._id.toString());
     this.router.navigate(['pelicula']);
   }
 
-  calificar(pelicula:Pelicula):void{
+  calificar(pelicula: Pelicula): void {
     console.log(pelicula)
     localStorage.setItem("_id", pelicula._id.toString());
     this.router.navigate(['calificacion']);
   }
 
-  openDialogWithTemplate(pelicula:Pelicula, template:TemplateRef<any>){
+  openDialogWithTemplate(pelicula: Pelicula, template: TemplateRef<any>) {
     // localStorage.setItem("_id", pelicula._id.toString());
-    this.token = localStorage.getItem('token');
-    this.usuario = jwtDecode(this.token!)
-    this.formCalificacion.patchValue({
-      usuario: this.usuario.uid,
-      pelicula: pelicula._id
-    })
-    this.dialogService.openDialogWithTemplate({
-      template
-    }).afterClosed().subscribe(res => console.log('Dialog with template Close ', res))
+    const token = localStorage.getItem('token');
+    if (token) {
+      const usuario:any = jwtDecode(token!)
+      this.formCalificacion.patchValue({
+        usuario: usuario.uid,
+        pelicula: pelicula._id
+      })
+      this.dialogService.openDialogWithTemplate({
+        template
+      }).afterClosed().subscribe(res => console.log('Dialog with template Close ', res))
+    }else{
+    this.router.navigate(['login']);
+    }
+
   }
 
 
-  calificacion(){
+  calificacion() {
     console.log(this.formCalificacion.value)
     this.peliculaService.calificar(this.formCalificacion.value)
-    .subscribe((data:any) =>{
-      console.log("Reseña registrada");
-      // alert("Pelicula creada")
-    })
+      .subscribe((data: any) => {
+        console.log("Reseña registrada", data);
+        // alert("Pelicula creada")
+      })
 
     this.formCalificacion.reset();
   }

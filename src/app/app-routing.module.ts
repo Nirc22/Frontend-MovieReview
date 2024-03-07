@@ -19,8 +19,12 @@ import { CalificarComponent } from './components/calificar/calificar.component';
 
 const routes: Routes = [
   {
-    path:'', redirectTo:'/dashboard', pathMatch:'full'
+    path:'', redirectTo:'/login', pathMatch:'full'
   },
+  // {
+  //   path: 'dashboard',
+  //   component: DashboardComponent
+  // },
   {
     path: 'login',
     component: LoginComponent
@@ -41,7 +45,7 @@ const routes: Routes = [
   {
     path: 'calificacion',
     component: CalificarComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'crearPelicula',
