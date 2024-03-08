@@ -23,6 +23,8 @@ import { CalificarComponent } from './components/calificar/calificar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import { DirectorComponent } from './components/director/director.component';
+import { ActorComponent } from './components/actor/actor.component';
 
 
 
@@ -42,6 +44,8 @@ import {MatIconModule} from '@angular/material/icon';
     DasboardAdminComponent,
     ActualizarPeliculaComponent,
     CalificarComponent,
+    DirectorComponent,
+    ActorComponent,
 
   ],
   imports: [

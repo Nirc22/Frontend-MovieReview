@@ -46,8 +46,18 @@ export class PeliculaService {
     return this.http.get<Director>(environment.urlApi+"director/get")
   }
 
+  crearDirector(director:any){
+    return this.http.post<any>(environment.urlApi+"director/create", director)
+
+  }
+
   getActores(formValue:any):Observable<Actor>{
     return this.http.get<Actor>(environment.urlApi+"actor/")
+  }
+
+  crearActor(director:any){
+    return this.http.post<any>(environment.urlApi+"actor/create", director)
+
   }
 
   getGeneros(formValue:any):Observable<Genero>{

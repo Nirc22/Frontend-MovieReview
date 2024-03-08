@@ -19,12 +19,12 @@ import { CalificarComponent } from './components/calificar/calificar.component';
 
 const routes: Routes = [
   {
-    path:'', redirectTo:'/login', pathMatch:'full'
+    path:'', redirectTo:'/dashboard', pathMatch:'full'
   },
-  // {
-  //   path: 'dashboard',
-  //   component: DashboardComponent
-  // },
+  {
+    path: 'dashboard',
+    component: DashboardComponent
+  },
   {
     path: 'login',
     component: LoginComponent

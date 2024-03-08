@@ -2,6 +2,11 @@
   <span *ngIf="token; else componenteAlternativo">{{decodedToken.rol}} {{decodedToken.nombre}}</span>
 
   <button *ngIf="rol" [routerLink]="['dashboardAdmin']">Peliculas Admin</button>
+  <button *ngIf="rol" [routerLink]="['crearPelicula']">Crear Pelicula</button>
+  <button *ngIf="rol" (click)="openDialog(director)">Director</button>
+  <button *ngIf="rol" (click)="openDialog(actor)">Actor</button>
+
+
   <button *ngIf="!rol" [routerLink]="['dashboard']">Peliculas Usuario</button>
 
 
@@ -18,4 +23,52 @@
 <ng-template #componenteAlternativo>
   <!-- Contenido del Componente Alternativo -->
   <p>Usuario no Logeado</p>
+</ng-template>
+
+<ng-template #director>
+  <div class="dialog">
+    <h1 mat-dialog-title>Director</h1>
+    <div mat-dialog-content>
+      <form class="form" [formGroup]="formDirector">
+        <div class="formulario">
+          <div class="input">
+            <label>Nombre</label>
+            <input type="text" class="fomr-control" formControlName="nombre">
+          </div>
+          <div class="input">
+            <label>Apellido</label>
+            <input type="text" class="fomr-control" formControlName="apellido">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close (click)="crearActor()">Enviar</button>
+      <button mat-button mat-dialog-close>Cerrar</button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #actor>
+  <div class="dialog">
+    <h1 mat-dialog-title>Actor</h1>
+    <div mat-dialog-content>
+      <form class="form" [formGroup]="formDirector">
+        <div class="formulario">
+          <div class="input">
+            <label>Nombre</label>
+            <input type="text" class="fomr-control" formControlName="nombre">
+          </div>
+          <div class="input">
+            <label>Apellido</label>
+            <input type="text" class="fomr-control" formControlName="apellido">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close (click)="crearActor()">Enviar</button>
+      <button mat-button mat-dialog-close>Cerrar</button>
+    </div>
+  </div>
 </ng-template>
