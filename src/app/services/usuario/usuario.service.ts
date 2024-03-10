@@ -5,6 +5,8 @@ import { LoginRequest } from 'src/app/interfaces/login-requets';
 import { environment } from 'src/environments/environment';
 import { firstValueFrom, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { MovieReview } from 'src/app/interfaces/movie-review';
+import { UsuarioReview } from 'src/app/interfaces/usuario-review';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +21,11 @@ export class UsuarioService {
 
   crearUsuario(formValue:any){
     return firstValueFrom( this.http.post<any>(environment.urlApi+"usuario/create", formValue))
+  }
+
+  getReviews(usuario:any):Observable<UsuarioReview>{
+    return this.http.get<UsuarioReview>(environment.urlApi+"usuarioReview/getById/"+usuario)
+
   }
 
   // errorHandler(error: HttpErrorResponse){

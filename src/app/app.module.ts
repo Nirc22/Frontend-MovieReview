@@ -25,6 +25,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { DirectorComponent } from './components/director/director.component';
 import { ActorComponent } from './components/actor/actor.component';
+import { ReviewsUsuarioComponent } from './components/reviews-usuario/reviews-usuario.component';
 
 
 
@@ -46,6 +47,7 @@ import { ActorComponent } from './components/actor/actor.component';
     CalificarComponent,
     DirectorComponent,
     ActorComponent,
+    ReviewsUsuarioComponent,
 
   ],
   imports: [

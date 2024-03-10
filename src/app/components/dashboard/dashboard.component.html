@@ -7,8 +7,8 @@
       <p>Calificación: {{pelicula.calificacion.calificacion}}</p>
       <div class="button">
         <button (click)="detalles(pelicula)">Detalles</button>
-        <button (click)="calificar(pelicula)">Calificar</button>
-        <button (click)="openDialogWithTemplate(pelicula, template1)">Calificará</button>
+        <!-- <button (click)="calificar(pelicula)">Calificar</button> -->
+        <button (click)="openDialogWithTemplate(pelicula, template1)">Calificar</button>
       </div>
     </div>
   </div>
@@ -40,7 +40,7 @@
     <!-- </div> -->
   </div>
   <div mat-dialog-actions>
-    <button mat-button mat-dialog-close (click)="calificacion()">Enviar</button>
+    <button mat-button mat-dialog-close (click)="calificar()">Enviar</button>
     <button mat-button mat-dialog-close>Close</button>
   </div>
 </div>

@@ -42,9 +42,14 @@ export class LoginComponent implements OnInit {
     console.log("Respuesta",response);
     this.responseService = response;
     if(!response.error){
-      localStorage.setItem('token', response.token);
-      localStorage.setItem('rol', response.rol)
+      this.loginService.setToken(response.token)
+      // localStorage.setItem('token', response.token);
+      // localStorage.setItem('rol', response.rol)
+
       const token = localStorage.getItem('token');
+
+      // const token = this.loginService.getTokenObservable
+
       console.log("Holaaaaa",token)
 
       this.decodedToken = jwtDecode(token!)

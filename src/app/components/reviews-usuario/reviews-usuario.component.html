@@ -1,0 +1,9 @@
+<div id="contenedor">
+  <div class="peliculas">
+    <div class="elementos" *ngFor="let review of reviews">
+      <h3>{{review.pelicula.nombre}}</h3>
+      <img src="http://localhost:4001/{{review.pelicula.imagenPelicula}}" ><!--(click)="detalles(pelicula)"-->
+      <p>Calificación: {{review.calificacion}}</p>
+    </div>
+  </div>
+</div>

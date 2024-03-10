@@ -7,7 +7,8 @@ export interface UsuarioReview {
   },
   pelicula: {
     id: string,
-    nombre: string
+    nombre: string,
+    imagenPelicula: string
   },
   calificacion: Number,
 }

@@ -55,11 +55,11 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['pelicula']);
   }
 
-  calificar(pelicula: Pelicula): void {
-    console.log(pelicula)
-    localStorage.setItem("_id", pelicula._id.toString());
-    this.router.navigate(['calificacion']);
-  }
+  // calificar(pelicula: Pelicula): void {
+  //   console.log(pelicula)
+  //   localStorage.setItem("_id", pelicula._id.toString());
+  //   this.router.navigate(['calificacion']);
+  // }
 
   openDialogWithTemplate(pelicula: Pelicula, template: TemplateRef<any>) {
     // localStorage.setItem("_id", pelicula._id.toString());
@@ -80,7 +80,7 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  calificacion() {
+  calificar() {
     console.log(this.formCalificacion.value)
     this.peliculaService.calificar(this.formCalificacion.value)
       .subscribe((data: any) => {

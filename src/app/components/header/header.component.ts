@@ -6,6 +6,8 @@ import { environment } from 'src/environments/environment';
 import { FormBuilder, NgForm, FormControl, FormGroup, Validators } from '@angular/forms'
 import { jwtDecode } from "jwt-decode";
 import { DialogService } from 'src/app/services/dialog/dialog.service';
+import { LoginService } from 'src/app/services/auth/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -23,21 +25,29 @@ export class HeaderComponent implements OnInit {
   rol: any;
   token:any;
 
-  constructor(private peliculaService: PeliculaService, private formBuilder:FormBuilder, private dialogService: DialogService) { }
+  constructor(private peliculaService: PeliculaService, private formBuilder:FormBuilder, private dialogService: DialogService, private loginService:LoginService, private router:Router) { }
 
   ngOnInit(): void {
-    this.validar();
-
+    this.loginService.getTokenObservable().subscribe(() =>{
+      this.validar();
+    })
   }
 
   validar(){
-    this.token = localStorage.getItem('token');
-    this.decodedToken = jwtDecode(this.token!)
-    if(this.decodedToken.rol === 'Admin'){
-      this.rol = true;
+    this.token = this.loginService.getToken();
+    if(this.token){
+      this.decodedToken = jwtDecode(this.token!)
+      if(this.decodedToken.rol === 'Admin'){
+        this.rol = true;
+      }else{
+        this.rol = false;
+        console.log(this.rol)
+      }
     }else{
       this.rol = false;
+      console.log('No existe token')
     }
+
   }
 
   openDialog  (template: TemplateRef<any>) {
@@ -67,6 +77,11 @@ export class HeaderComponent implements OnInit {
       console.log("Actor creado", data);
     })
     this.formDirector.reset();
+  }
+
+  logOut(){
+    this.loginService.deleteToken();
+    this.router.navigate(['dashboar']);
   }
 
 

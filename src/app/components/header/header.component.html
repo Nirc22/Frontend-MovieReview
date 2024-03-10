@@ -7,7 +7,9 @@
   <button *ngIf="rol" (click)="openDialog(actor)">Actor</button>
 
 
-  <button *ngIf="!rol" [routerLink]="['dashboard']">Peliculas Usuario</button>
+  <button *ngIf="!rol" [routerLink]="['dashboard']">Peliculas</button>
+  <button *ngIf="token && !rol" [routerLink]="['reviewsUsuario']">Mis Reviews</button>
+
 
 
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
@@ -16,7 +18,7 @@
   <span>My App</span>
   <span class="example-spacer"></span>
   <button *ngIf="!token" [routerLink]="['login']">Login</button>
-  <button *ngIf="token">Log Out</button>
+  <button *ngIf="token" (click)="logOut()">Log Out</button>
 
 </mat-toolbar>
 

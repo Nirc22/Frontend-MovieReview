@@ -14,6 +14,7 @@ import { ActualizarPeliculaComponent } from './components/actualizar-pelicula/ac
 import { AuthGuard } from './helpers/auth.guard';
 import { RolGuard } from './helpers/rol.guard';
 import { CalificarComponent } from './components/calificar/calificar.component';
+import { ReviewsUsuarioComponent } from './components/reviews-usuario/reviews-usuario.component';
 
 
 
@@ -46,6 +47,11 @@ const routes: Routes = [
     path: 'calificacion',
     component: CalificarComponent,
     // canActivate: [AuthGuard]
+  },
+  {
+    path: 'reviewsUsuario',
+    component: ReviewsUsuarioComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'crearPelicula',

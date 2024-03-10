@@ -9,6 +9,8 @@ import { environment } from 'src/environments/environment';
 })
 export class LoginService {
 
+  private tokenSubject = new BehaviorSubject<string | null>(localStorage.getItem('token'));
+
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   currentUserData: BehaviorSubject<String> = new BehaviorSubject<String>("");
 
@@ -30,7 +32,8 @@ export class LoginService {
       const bearerToken = headers.get('Authorization')!;
       const token = bearerToken.replace('Bearer', '');
 
-      localStorage.setItem('token', token);
+      // localStorage.setItem('token', token);
+      this.setToken(token);
 
       return body;
 
@@ -38,7 +41,21 @@ export class LoginService {
   }
 
   getToken(){
-    return localStorage.getItem('token');
+    return this.tokenSubject.value;
+  }
+
+  setToken(token: string) {
+    localStorage.setItem('token', token);
+    this.tokenSubject.next(token);
+  }
+
+  deleteToken(){
+    localStorage.removeItem('token');
+    this.tokenSubject.next(null);
+  }
+
+  getTokenObservable() {
+    return this.tokenSubject.asObservable();
   }
 
   decodeToken (token:string){
