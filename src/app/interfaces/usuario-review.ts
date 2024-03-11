@@ -1,12 +1,12 @@
 export interface UsuarioReview {
-  id: string,
+  _id: string,
   usuario:{
-    id: string,
+    _id: string,
     nombre: string,
     apellidos: string
   },
   pelicula: {
-    id: string,
+    _id: string,
     nombre: string,
     imagenPelicula: string
   },

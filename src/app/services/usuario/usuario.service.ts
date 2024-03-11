@@ -24,7 +24,7 @@ export class UsuarioService {
   }
 
   getReviews(usuario:any):Observable<UsuarioReview>{
-    return this.http.get<UsuarioReview>(environment.urlApi+"usuarioReview/getById/"+usuario)
+    return this.http.get<UsuarioReview>(environment.urlApi+"usuarioReview/getReviewsUsuario/"+usuario)
 
   }
 

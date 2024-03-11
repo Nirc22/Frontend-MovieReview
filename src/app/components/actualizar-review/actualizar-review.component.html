@@ -1,0 +1,21 @@
+<!-- <ng-container  #actualizarReview> -->
+  <div class="dialog">
+  <h1>{{data.reviewData.pelicula.nombre}}</h1>
+  <h1 mat-dialog-title>Calificación</h1>
+  <div  mat-dialog-content>
+      <form class="form" [formGroup]="formActualizarReview"> <!--(ngSubmit)="calificar()"-->
+        <div class="formulario">
+          <div class="input">
+            <input type="number" id="calificacion" class="fomr-control" formControlName="calificacion">
+          </div>
+        </div>
+      </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close (click)="actualizarReview()">Actualizar</button>
+
+
+    <button mat-button mat-dialog-close>Close</button>
+  </div>
+</div>
+<!-- </ng-container> -->

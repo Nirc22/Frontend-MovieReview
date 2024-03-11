@@ -7,6 +7,7 @@ import { Director } from 'src/app/interfaces/director';
 import { Actor } from 'src/app/interfaces/actor';
 import { Genero } from 'src/app/interfaces/genero';
 import { MovieReview } from 'src/app/interfaces/movie-review';
+import { UsuarioReview } from 'src/app/interfaces/usuario-review';
 
 
 @Injectable({
@@ -66,6 +67,19 @@ export class PeliculaService {
 
   calificar(calificacion:any){
     return this.http.post<any>(environment.urlApi+"usuarioReview/create", calificacion)
+  }
+
+  // getReviewById(_id:any):Observable<any>{
+  //   return this.http.get<any>(environment.urlApi+"usuarioReview/getReviewById/"+_id)
+  // }
+
+  getReviewById(_id:any):Observable<UsuarioReview>{
+    return this.http.get<UsuarioReview>(environment.urlApi+"usuarioReview/getReviewById/"+_id)//terminar de hacer
+  }
+
+  actualizarCalificacion( _id:any, calificacion:any){
+    return this.http.put<any>(environment.urlApi+"usuarioReview/updateReviewUsuario/"+_id, calificacion)
+
   }
 
 

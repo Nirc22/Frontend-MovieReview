@@ -73,6 +73,9 @@ export class DashboardComponent implements OnInit {
       this.dialogService.openDialogWithTemplate({
         template
       }).afterClosed().subscribe(res => console.log('Dialog with template Close ', res))
+    // this.formCalificacion.reset();
+
+
     }else{
     this.router.navigate(['login']);
     }
