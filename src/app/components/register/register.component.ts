@@ -16,8 +16,8 @@ export class RegisterComponent implements OnInit {
   formCrearUsuario: FormGroup = this.forBuilder.group({
     nombre: ['', [Validators.required]],
     apellidos: ['', [Validators.required]],
-    email: ['', [Validators.required]],
-    password: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
   responseService:any;
@@ -36,6 +36,22 @@ export class RegisterComponent implements OnInit {
   //     // this.router.navigate(['dashboard']);
   //   })
   // }
+
+  get nombre(){
+    return this.formCrearUsuario.get('nombre') as FormControl;
+  }
+
+  get apellidos(){
+    return this.formCrearUsuario.get('apellidos') as FormControl;
+  }
+
+  get email(){
+    return this.formCrearUsuario.get('email') as FormControl;
+  }
+
+  get password(){
+    return this.formCrearUsuario.get('password') as FormControl;
+  }
 
   async crearUsuario() {
     const response = await this.usuarioService.crearUsuario(this.formCrearUsuario.value);

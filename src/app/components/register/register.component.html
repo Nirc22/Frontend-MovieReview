@@ -7,22 +7,36 @@
       <div class="input">
         <label>Nombre</label>
         <input type="text" class="fomr-control" formControlName="nombre">
+        <div class="alert alert-danger mt-2" [hidden]="nombre.dirty || nombre.untouched">
+          El nombre es obligatorio.
+        </div>
       </div>
       <div class="input">
         <label>Apellidos</label>
         <input type="text" class="fomr-control" formControlName="apellidos">
+        <div class="alert alert-danger mt-2" [hidden]="apellidos.dirty || apellidos.untouched">
+          Los apellidos son obligatorios.
+        </div>
       </div>
       <div class="input">
         <label>Email</label>
         <input type="email" class="fomr-control" formControlName="email">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)">
+          <div *ngIf="email.errors?.['required']">El email es obligatorio.</div>
+          <div *ngIf="email.errors?.['email']">Debe tener formato email.</div>
+        </div>
       </div>
       <div class="input">
         <label>Password</label>
         <input type="password" class="fomr-control" formControlName="password">
+        <div *ngIf="password.invalid && (password.dirty || password.touched)">
+          <div *ngIf="password.errors?.['required']">Password es obligatorio.</div>
+          <div *ngIf="password.errors?.['minlength']">Debe tener al menos 6 carácteres.</div>
+        </div>
       </div>
       <div class="button">
         <!-- <input type="submit" value="Crear"> -->
-        <button type="submit">Crear</button>
+        <button type="submit" [disabled]="formCrearUsuario.invalid">Crear</button>
       </div>
       <div class="input" *ngIf="responseService && !responseService.ok">{{ responseService.msg }}</div>
       <div class="input">

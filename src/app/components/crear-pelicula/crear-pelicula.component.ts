@@ -50,12 +50,24 @@ export class CrearPeliculaComponent implements OnInit {
   }
 
   //sirve para validar los formularios
+  get nombre(){
+    return this.formCrearPelicula.get('nombre') as FormControl;
+  }
+
   get director_id() {
     return this.formCrearPelicula.get('director') as FormControl;
   }
 
   get actor_id() {
-    return this.formCrearPelicula.get('actor') as FormControl;
+    return this.formCrearPelicula.get('actores') as FormControl;
+  }
+
+  get anio(){
+    return this.formCrearPelicula.get('anio') as FormControl;
+  }
+
+  get genero(){
+    return this.formCrearPelicula.get('generos') as FormControl;
   }
 
   capturarImagen(event: any) {
@@ -63,21 +75,6 @@ export class CrearPeliculaComponent implements OnInit {
     this.formCrearPelicula.patchValue({
       imagenPelicula: file, // Actualiza el valor del campo imagenPelicula
     });
-
-    // if(event.target.files && event.target.files.length > 0){
-    //   const imagenCapturada = event.target.files[0];
-    //   if(imagenCapturada.type.includes('image')){
-    //     const reader = new FileReader()
-    //     reader.readAsDataURL(imagenCapturada);
-    //     // reader.onload = function load(){
-
-    //     // }
-    //     this.file = imagenCapturada;
-
-    //   }else{
-    //     console.log('Hubo un error');
-    //   }
-    // }
   }
   registrarPelicula() {
     console.log(this.formCrearPelicula.value)

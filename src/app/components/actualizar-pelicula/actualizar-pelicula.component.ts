@@ -47,12 +47,24 @@ export class ActualizarPeliculaComponent implements OnInit {
     this.getGeneros();
   }
 
+  get nombre(){
+    return this.formActualizarPelicula.get('nombre') as FormControl;
+  }
+
   get director_id() {
     return this.formActualizarPelicula.get('director') as FormControl;
   }
 
   get actor_id() {
-    return this.formActualizarPelicula.get('actor') as FormControl;
+    return this.formActualizarPelicula.get('actores') as FormControl;
+  }
+
+  get anio(){
+    return this.formActualizarPelicula.get('anio') as FormControl;
+  }
+
+  get genero(){
+    return this.formActualizarPelicula.get('generos') as FormControl;
   }
 
   getPeliculaById() {

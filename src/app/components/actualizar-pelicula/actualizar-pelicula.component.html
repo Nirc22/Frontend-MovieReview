@@ -7,33 +7,49 @@
       <div class="input">
         <label for="dsnombre" class="form-label">Nombre</label>
         <input type="text" class="fomr-control" id="nombre" formControlName="nombre">
+        <div class="alert alert-danger mt-2" [hidden]="nombre.valid || nombre.pristine && nombre.untouched">
+          El nombre es obligatorio.
+        </div>
       </div>
       <div class="input">
         <label>Director</label>
         <select class="form-control" id="director" formControlName="director">
           <option *ngFor="let director of directores" value={{director._id}}>{{director.nombre}} {{director.apellido}}</option>
         </select>
+        <div class="alert alert-danger mt-2"
+        [hidden]="director_id.valid || director_id.pristine && director_id.untouched">
+        El Director es obligatorio.
+      </div>
       </div>
       <div class="input" formGroupName="actores">
         <label>Actores</label>
         <select class="form-control" id="actor" formControlName="actor">
           <option *ngFor="let actor of actores" value={{actor._id}}>{{actor.nombre}} {{actor.apellido}}</option>
         </select>
+        <div class="alert alert-danger mt-2" [hidden]="actor_id.dirty || actor_id.untouched">
+          Elegir el Actor es obligatorio.
+        </div>
       </div>
       <div class="input">
         <label>Año</label>
         <input type="date" class="fomr-control" formControlName="anio">
+        <div [hidden]="anio.valid || anio.pristine && anio.untouched">
+          Fecha de estreno es obligatoria.
+        </div>
       </div>
       <div class="input" formGroupName="generos">
         <label>Generos</label>
         <select class="form-control" id="genero" formControlName="genero">
           <option *ngFor="let genero of generos" value={{genero._id}}>{{genero.nombre}}</option>
         </select>
+        <div class="alert alert-danger mt-2" [hidden]="genero.dirty || genero.untouched">
+          Elegir el genero es obligatorio.
+        </div>
       </div>
       <div class="button">
 
         <!-- <input type="submit" value="Crear"> -->
-        <button type="submit" formenctype="multipart/form-data" value="Submit as Multipart/form-data">Actualizar</button>
+        <button type="submit" [disabled]="formActualizarPelicula.invalid" formenctype="multipart/form-data" value="Submit as Multipart/form-data">Actualizar</button>
       </div>
       <!-- <div class="input" *ngIf="responseService && !responseService.ok">{{ responseService.msg }}</div> -->
     </div>

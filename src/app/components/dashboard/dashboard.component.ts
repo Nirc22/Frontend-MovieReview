@@ -73,10 +73,11 @@ export class DashboardComponent implements OnInit {
       this.dialogService.openDialogWithTemplate({
         template
       }).afterClosed().subscribe(res => console.log('Dialog with template Close ', res))
-    // this.formCalificacion.reset();
     }else{
     this.router.navigate(['login']);
     }
+    // this.formCalificacion.reset();
+
 
   }
 
@@ -87,12 +88,16 @@ export class DashboardComponent implements OnInit {
       (response) => {
         console.log('Review registrada', response);
         alert(response.msg)
-        location.reload();
+        // location.reload();
+        this.formCalificacion.reset();
+
         // this.router.navigateByUrl('dashboard', { skipLocationChange: true });
       },
       (error) => {
-        console.error('Error al actualizar Review:', error);
+        console.error('Error al crear Review:', error.error.msg);
         alert(error.error.msg)
+        this.formCalificacion.reset();
+
       }
     )
   }
