@@ -4,7 +4,7 @@
       <h3>{{pelicula.nombre}}</h3>
       <img src="http://localhost:4001/{{pelicula.imagenPelicula}}" (click)="detalles(pelicula)">
       <!--Retirado por exceso de info-->
-      <p>Calificación: {{pelicula.calificacion.calificacion}}</p>
+      <p>Calificación: {{pelicula.calificacion.calificacion.toFixed(1) }}</p><!--toFixed(1) para mostrar una sola decimal-->
       <div class="button">
         <button (click)="detalles(pelicula)">Detalles</button>
         <!-- <button (click)="calificar(pelicula)">Calificar</button> -->

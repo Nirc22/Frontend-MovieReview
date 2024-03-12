@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogWithTemplateData } from '../../interfaces/dialog-with-template-data'
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { PeliculaService } from 'src/app/services/pelicula/pelicula.service';
 import { Router } from '@angular/router';
 import { Pelicula } from 'src/app/interfaces/pelicula';
@@ -17,7 +17,7 @@ export class ActualizarReviewComponent implements OnInit {
   formActualizarReview: FormGroup = this.formBuilder.group({
     usuario: [''],
     pelicula: [''],
-    calificacion: ['', [Validators.required]]
+    calificacion: ['', [Validators.required, Validators.min(0), Validators.max(5)]]
   })
 
   constructor(@Inject(MAT_DIALOG_DATA) public data:any, private formBuilder: FormBuilder, private peliculaService: PeliculaService, private router: Router) { }
@@ -26,8 +26,11 @@ export class ActualizarReviewComponent implements OnInit {
     this.datos();
   }
 
+  get calificacion(){
+    return this.formActualizarReview.get('calificacion') as FormControl;
+  }
+
   datos(){
-    console.log("Datoooo",this.data.reviewData)
     this.formActualizarReview.setValue({
       usuario: this.data.reviewData.usuario,
       pelicula: this.data.reviewData.pelicula._id,
@@ -40,9 +43,7 @@ export class ActualizarReviewComponent implements OnInit {
     this.peliculaService.actualizarCalificacion(this.data.reviewData._id ,reviewData).subscribe(
       (response) => {
         console.log('Review Actualizada:', response);
-        // localStorage.setItem("_id", response.uid.toString());
-        this.router.navigate(['reviewsUsuario']);
-        // Realiza acciones adicionales después de crear la película
+        location.reload();
       },
       (error) => {
         console.error('Error al actualizar Review:', error);
@@ -51,11 +52,7 @@ export class ActualizarReviewComponent implements OnInit {
 
   }
 
-  detalles(pelicula: Pelicula): void {
-    console.log(pelicula)
-    localStorage.setItem("_id", pelicula._id.toString());
-    this.router.navigate(['pelicula']);
-  }
+
 
 
 

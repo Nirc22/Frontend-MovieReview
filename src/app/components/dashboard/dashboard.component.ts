@@ -74,8 +74,6 @@ export class DashboardComponent implements OnInit {
         template
       }).afterClosed().subscribe(res => console.log('Dialog with template Close ', res))
     // this.formCalificacion.reset();
-
-
     }else{
     this.router.navigate(['login']);
     }
@@ -85,12 +83,18 @@ export class DashboardComponent implements OnInit {
 
   calificar() {
     console.log(this.formCalificacion.value)
-    this.peliculaService.calificar(this.formCalificacion.value)
-      .subscribe((data: any) => {
-        console.log("Reseña registrada", data);
-        // alert("Pelicula creada")
-      })
-
-    this.formCalificacion.reset();
+    this.peliculaService.calificar(this.formCalificacion.value).subscribe(
+      (response) => {
+        console.log('Review registrada', response);
+        alert(response.msg)
+        location.reload();
+        // this.router.navigateByUrl('dashboard', { skipLocationChange: true });
+      },
+      (error) => {
+        console.error('Error al actualizar Review:', error);
+        alert(error.error.msg)
+      }
+    )
   }
+
 }
