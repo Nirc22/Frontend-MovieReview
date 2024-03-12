@@ -74,6 +74,10 @@ button:hover{
 }
 
 .dialog{
-  background-color: red;
+  background-color: none;
   /* padding: 100px; */
+}
+
+#imgDialog{
+  height: 200px;
 }

@@ -27,6 +27,12 @@ export class PeliculaService {
     return this.http.get<Pelicula>(environment.urlApi+"pelicula/getById/"+_id)//terminar de hacer
   }
 
+  getPeliculalByNombre(nombre:any):Observable<any> {
+    console.log("Llegaaaa",nombre)
+    // const body = { nombre: nombre }
+    return this.http.get<any>(environment.urlApi+"pelicula/getByNombre/"+nombre);
+  }
+
   // getPeliculaById(formValue:any){
   //   return firstValueFrom(this.http.get<any>(environment.urlApi+"pelicula/getById/", formValue))
   // }

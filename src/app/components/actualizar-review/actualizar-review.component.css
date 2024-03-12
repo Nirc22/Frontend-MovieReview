@@ -1,3 +1,7 @@
 .dialog{
   background-color: none;
 }
+
+#imgDialog{
+  height: 200px;
+}

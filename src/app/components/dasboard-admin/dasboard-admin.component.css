@@ -1,5 +1,5 @@
 #contenedor {
-  margin-top: 70px;
+  margin-top: 80px;
 
   /* position: absolute;
   top: 0;
@@ -48,6 +48,7 @@ img {
   box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
   width: auto;
   height:auto;
+  /* max-width: 400px; */
   margin-left: 12%;
   margin-right: 12%;
 }

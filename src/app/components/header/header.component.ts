@@ -16,70 +16,90 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  formDirector: FormGroup = this.formBuilder.group({
+  formReparto: FormGroup = this.formBuilder.group({
     nombre: ['', [Validators.required]],
     apellido: ['', [Validators.required]],
   })
 
-  decodedToken:any;
+  decodedToken: any;
   rol: any;
-  token:any;
+  token: any;
 
-  constructor(private peliculaService: PeliculaService, private formBuilder:FormBuilder, private dialogService: DialogService, private loginService:LoginService, private router:Router) { }
+  constructor(private peliculaService: PeliculaService, private formBuilder: FormBuilder, private dialogService: DialogService, private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
-    this.loginService.getTokenObservable().subscribe(() =>{
+    this.loginService.getTokenObservable().subscribe(() => {
       this.validar();
     })
   }
 
-  validar(){
+  get nombre() {
+    return this.formReparto.get('nombre') as FormControl;
+  }
+
+  get apellido() {
+    return this.formReparto.get('apellido') as FormControl;
+  }
+
+  validar() {
     this.token = this.loginService.getToken();
-    if(this.token){
+    if (this.token) {
       this.decodedToken = jwtDecode(this.token!)
-      if(this.decodedToken.rol === 'Admin'){
+      if (this.decodedToken.rol === 'Admin') {
         this.rol = true;
-      }else{
+      } else {
         this.rol = false;
         console.log(this.rol)
       }
-    }else{
+    } else {
       this.rol = false;
       console.log('No existe token')
     }
 
   }
 
-  openDialog  (template: TemplateRef<any>) {
+  openDialog(template: TemplateRef<any>) {
     // localStorage.setItem("_id", pelicula._id.toString());
 
     this.dialogService.openDialogWithTemplate({
       template
     }).afterClosed().subscribe(res => console.log('Dialog with template Close ', res))
-    this.formDirector.reset();
+    this.formReparto.reset();
 
 
   }
 
   crearDirector() {
-    console.log(this.formDirector.value)
-    this.peliculaService.crearDirector(this.formDirector.value)
-    .subscribe((data:any) =>{
-      console.log("Director creado", data);
-    })
-    this.formDirector.reset();
+    console.log(this.formReparto.value)
+    this.peliculaService.crearDirector(this.formReparto.value).subscribe((response) => {
+      console.log("Director creado", response);
+      alert(response.msg);
+      this.formReparto.reset();
+    },
+      (error) => {
+        console.error('Error al crear Director:', error.error.msg);
+        alert(error.error.msg)
+        this.formReparto.reset();
+      }
+    )
   }
 
   crearActor() {
-    console.log(this.formDirector.value)
-    this.peliculaService.crearActor(this.formDirector.value)
-    .subscribe((data:any) =>{
-      console.log("Actor creado", data);
-    })
-    this.formDirector.reset();
+    console.log(this.formReparto.value)
+    this.peliculaService.crearActor(this.formReparto.value).subscribe((response) => {
+      console.log("Actor creado", response);
+      alert(response.msg);
+      this.formReparto.reset();
+    },
+      (error) => {
+        console.error('Error al crear Actor:', error.error.msg);
+        alert(error.error.msg)
+        this.formReparto.reset();
+      }
+    )
   }
 
-  logOut(){
+  logOut() {
     this.loginService.deleteToken();
     this.router.navigate(['dashboar']);
   }

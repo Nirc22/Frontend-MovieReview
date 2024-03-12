@@ -14,6 +14,11 @@ import { DialogService } from 'src/app/services/dialog/dialog.service';
 })
 export class DasboardAdminComponent implements OnInit {
 
+  formBucar: FormGroup = this.formBuilder.group({
+    nombre: ['']
+  })
+  nombrePelicula: any = '';
+
   peliculas: Pelicula[] = [];
   pelicula: Pelicula[] = [];
 
@@ -36,6 +41,26 @@ export class DasboardAdminComponent implements OnInit {
     console.log(pelicula)
     localStorage.setItem("_id", pelicula._id.toString());
     this.router.navigate(['peliculaAdmin']);
+  }
+
+  buscar() {
+    // console.log(this.formBucar.value)
+    // this.peliculaService.getPeliculalByNombre(this.formBucar.value)
+    if (this.nombrePelicula) {
+      console.log(this.nombrePelicula)
+      this.peliculaService.getPeliculalByNombre(this.nombrePelicula)
+        .subscribe((response) => {
+          // console.log("Addddddddddddd", response.peliculas)
+          this.peliculas = response.peliculas;
+          console.log("Nombreeee", this.peliculas)
+        }, (error) => {
+          console.error('Error al buscar películas:', error.error.msg);
+          alert(error.error.msg)
+        });
+    }else{
+      this.obtenerPeliculas();
+    }
+
   }
 
 }

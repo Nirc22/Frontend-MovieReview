@@ -31,21 +31,27 @@
   <div class="dialog">
     <h1 mat-dialog-title>Director</h1>
     <div mat-dialog-content>
-      <form class="form" [formGroup]="formDirector">
+      <form class="form" [formGroup]="formReparto">
         <div class="formulario">
           <div class="input">
             <label>Nombre</label>
             <input type="text" class="fomr-control" formControlName="nombre">
+            <div [hidden]="nombre.valid || nombre.pristine && nombre.untouched">
+              El nombre es obligatorio.
+            </div>
           </div>
           <div class="input">
             <label>Apellido</label>
             <input type="text" class="fomr-control" formControlName="apellido">
+            <div [hidden]="apellido.valid || apellido.pristine && apellido.untouched">
+              El apellido es obligatorio.
+            </div>
           </div>
         </div>
       </form>
     </div>
     <div mat-dialog-actions>
-      <button mat-button mat-dialog-close (click)="crearActor()">Enviar</button>
+      <button mat-button mat-dialog-close [disabled]="formReparto.invalid" (click)="crearDirector()">Enviar</button>
       <button mat-button mat-dialog-close>Cerrar</button>
     </div>
   </div>
@@ -55,21 +61,27 @@
   <div class="dialog">
     <h1 mat-dialog-title>Actor</h1>
     <div mat-dialog-content>
-      <form class="form" [formGroup]="formDirector">
+      <form class="form" [formGroup]="formReparto">
         <div class="formulario">
           <div class="input">
             <label>Nombre</label>
             <input type="text" class="fomr-control" formControlName="nombre">
+            <div [hidden]="nombre.valid || nombre.pristine && nombre.untouched">
+              El nombre es obligatorio.
+            </div>
           </div>
           <div class="input">
             <label>Apellido</label>
             <input type="text" class="fomr-control" formControlName="apellido">
+            <div [hidden]="apellido.valid || apellido.pristine && apellido.untouched">
+              El apellido es obligatorio.
+            </div>
           </div>
         </div>
       </form>
     </div>
     <div mat-dialog-actions>
-      <button mat-button mat-dialog-close (click)="crearActor()">Enviar</button>
+      <button mat-button mat-dialog-close [disabled]="formReparto.invalid" (click)="crearActor()">Enviar</button>
       <button mat-button mat-dialog-close>Cerrar</button>
     </div>
   </div>

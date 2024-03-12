@@ -1,6 +1,7 @@
 <!-- <ng-container  #actualizarReview> -->
 <div class="dialog">
   <h1>{{data.reviewData.pelicula.nombre}}</h1>
+  <img id="imgDialog" src="http://localhost:4001/{{data.reviewData.pelicula.imagenPelicula}}">
   <h1 mat-dialog-title>Calificación</h1>
   <div mat-dialog-content>
     <form class="form" [formGroup]="formActualizarReview"> <!--(ngSubmit)="calificar()"-->
@@ -22,7 +23,7 @@
   <div mat-dialog-actions>
     <button mat-button mat-dialog-close [disabled]="formActualizarReview.invalid"
       (click)="actualizarReview()">Actualizar</button>
-    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button mat-dialog-close>Cerrar</button>
   </div>
 </div>
 <!-- </ng-container> -->
