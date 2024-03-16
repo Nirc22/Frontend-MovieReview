@@ -7,6 +7,7 @@ import { FormBuilder, NgForm, FormControl, FormGroup, Validators } from '@angula
 import { jwtDecode } from "jwt-decode";
 import { DialogService } from 'src/app/services/dialog/dialog.service';
 import { LoginService } from 'src/app/services/auth/login.service';
+import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -25,12 +26,13 @@ export class HeaderComponent implements OnInit {
   rol: any;
   token: any;
 
-  constructor(private peliculaService: PeliculaService, private formBuilder: FormBuilder, private dialogService: DialogService, private loginService: LoginService, private router: Router) { }
+  constructor(private peliculaService: PeliculaService, private formBuilder: FormBuilder, private dialogService: DialogService, private loginService: LoginService, private router: Router, private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
     this.loginService.getTokenObservable().subscribe(() => {
       this.validar();
     })
+    this.ValidarToken();
   }
 
   get nombre() {
@@ -102,6 +104,23 @@ export class HeaderComponent implements OnInit {
   logOut() {
     this.loginService.deleteToken();
     this.router.navigate(['dashboar']);
+  }
+
+  ValidarToken(){
+    this.token = this.loginService.getToken();
+    if (this.token) {
+      this.usuarioService.validarToken(this.token)
+      .subscribe((response) =>{
+        console.log(response)
+      }, (error) =>{
+        console.error(error.error.msg);
+        this.loginService.deleteToken();
+        // alert(error.error.msg)
+      });
+    } else {
+      this.rol = false;
+      console.log('No existe token')
+    }
   }
 
 

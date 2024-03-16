@@ -23,6 +23,9 @@ import { CalificarComponent } from './components/calificar/calificar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+
+
 import { DirectorComponent } from './components/director/director.component';
 import { ActorComponent } from './components/actor/actor.component';
 import { ReviewsUsuarioComponent } from './components/reviews-usuario/reviews-usuario.component';
@@ -61,7 +64,8 @@ import { ActualizarReviewComponent } from './components/actualizar-review/actual
     BrowserAnimationsModule,
     MatDialogModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [
     {

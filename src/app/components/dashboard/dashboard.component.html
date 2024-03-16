@@ -1,7 +1,9 @@
 <div id="contenedor">
-  <div>
-    <input type="text" [(ngModel)]="nombrePelicula" placeholder="Nombre de la película">
-    <button (click)="buscar()">Buscar</button>
+  <div id="buscador">
+    <div class="flex">
+      <input class="buscador" type="text" [(ngModel)]="nombrePelicula" (keydown.enter)="buscar()">
+      <button (click)="buscar()">Buscar</button>
+    </div>
   </div>
   <div class="peliculas">
     <div class="elementos" *ngFor="let pelicula of peliculas">

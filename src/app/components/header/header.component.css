@@ -1,5 +1,39 @@
-.example-spacer {
+/* .example-spacer {
   flex: 1 1 auto;
+} */
+.mat-icon-button{
+  background-color: white;
+}
+
+/* mat-menu-content{
+  padding: 100px;
+  width: 9000px;
+} */
+
+span{
+  margin: 10px;
+  color: #fef2f2;
+}
+
+.menu{
+  /* background-color: red; */
+  width: 200px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+  /* text-align: center; */
+  text-justify: center;
+  /* margin: 10px; */
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
+@media (max-width: 300px) {
+  .spacer {
+    flex: 0 0 auto;
+  }
 }
 
 mat-toolbar{
@@ -9,7 +43,7 @@ mat-toolbar{
   left: 0;
   width: 100%;
   background-color: #991b1b;
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
 
   /* top: 0;
   left: 0;
@@ -33,4 +67,8 @@ button:hover{
   background-color: #d02941;
   cursor: pointer;
   transition: 0.3s;
+}
+
+.menu{
+  margin: none;
 }

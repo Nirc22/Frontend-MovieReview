@@ -62,14 +62,8 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['pelicula']);
   }
 
-  // calificar(pelicula: Pelicula): void {
-  //   console.log(pelicula)
-  //   localStorage.setItem("_id", pelicula._id.toString());
-  //   this.router.navigate(['calificacion']);
-  // }
-
   openDialogWithTemplate(pelicula: Pelicula, template: TemplateRef<any>) {
-    localStorage.setItem("_id", pelicula._id.toString());
+    // localStorage.setItem("_id", pelicula._id.toString());
     const token = localStorage.getItem('token');
     if (token) {
       this.pelicula = pelicula;
@@ -87,8 +81,6 @@ export class DashboardComponent implements OnInit {
     this.formCalificacion.patchValue({
       calificacion: '',
     });
-
-
   }
 
 
@@ -122,7 +114,7 @@ export class DashboardComponent implements OnInit {
           this.peliculas = response.peliculas;
           console.log("Nombreeee", this.peliculas)
         }, (error) => {
-          console.error('Error al buscar películas:', error.error.msg);
+          console.error(error.error.msg);
           alert(error.error.msg)
         });
     }else{

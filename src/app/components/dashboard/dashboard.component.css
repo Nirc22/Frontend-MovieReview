@@ -1,5 +1,5 @@
 #contenedor {
-  margin-top: 70px;
+  margin-top: 64px;
   /* position: absolute;
   top: 0;
   left: 0;
@@ -11,6 +11,7 @@
 }
 
 .peliculas {
+  padding-top: 50px;
   display: grid;
   grid-template-columns: repeat(auto-fit,
       minmax(350px, 1fr));
@@ -73,11 +74,57 @@ button:hover{
   transition: 0.3s;
 }
 
+ng-template{
+  background-color: red;
+}
+
 .dialog{
-  background-color: none;
+  /* margin: 10px; */
+  padding-top: 0px;
+  /* padding: 10px; */
+  background-color: #470a16;
+  border-radius: 5px
   /* padding: 100px; */
 }
 
 #imgDialog{
   height: 200px;
+}
+
+#buscador{
+  position:fixed;
+  background-color: #fef2f2;
+  width: 100%;
+  padding: 10px;
+  z-index: 999;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+#buscador input{
+  background-color: #fef2f2;
+  border: solid 1px #961b34;
+  border-radius: 7px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+  width: 200px;
+  color: #470a16;
+}
+
+#buscador button{
+  margin-right: 25px;
+  margin-left: 10px;
+  border-radius: 7px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* .buscador{
+  background-color: #fef2f2;
+  margin-right: 100px;
+} */
+
+.flex{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  /* background-color: red; */
 }

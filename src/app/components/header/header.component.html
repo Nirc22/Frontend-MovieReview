@@ -1,30 +1,32 @@
 <mat-toolbar>
-  <span *ngIf="token; else componenteAlternativo">{{decodedToken.rol}} {{decodedToken.nombre}}</span>
-
-  <button *ngIf="rol" [routerLink]="['dashboardAdmin']">Peliculas Admin</button>
-  <button *ngIf="rol" [routerLink]="['crearPelicula']">Crear Pelicula</button>
-  <button *ngIf="rol" (click)="openDialog(director)">Director</button>
-  <button *ngIf="rol" (click)="openDialog(actor)">Actor</button>
+  <mat-toolbar-row>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
 
 
-  <button *ngIf="!rol" [routerLink]="['dashboard']">Peliculas</button>
-  <button *ngIf="token && !rol" [routerLink]="['reviewsUsuario']">Mis Reviews</button>
+    <mat-menu #menu="matMenu">
+      <button class="menu" mat-menu-item *ngIf="rol" [routerLink]="['dashboardAdmin']">Peliculas Admin</button>
+      <button class="menu" mat-menu-item *ngIf="rol" [routerLink]="['crearPelicula']">Crear Pelicula</button>
+      <button class="menu" mat-menu-item *ngIf="rol" (click)="openDialog(director)">Director</button>
+      <button class="menu" mat-menu-item *ngIf="rol" (click)="openDialog(actor)">Actor</button>
 
 
+      <button class="menu" mat-menu-item *ngIf="!rol" [routerLink]="['dashboard']">Peliculas</button>
+      <button class="menu" mat-menu-item *ngIf="token && !rol" [routerLink]="['reviewsUsuario']">Mis Reviews</button>
+    </mat-menu>
+    <span *ngIf="token; else componenteAlternativo">{{decodedToken.nombre}}</span>
 
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>My App</span>
-  <span class="example-spacer"></span>
-  <button *ngIf="!token" [routerLink]="['login']">Login</button>
-  <button *ngIf="token" (click)="logOut()">Log Out</button>
+    <span class="spacer"></span>
 
+    <button *ngIf="!token" [routerLink]="['login']">Login</button>
+    <button *ngIf="token" (click)="logOut()">Log Out</button>
+  </mat-toolbar-row>
 </mat-toolbar>
 
 <ng-template #componenteAlternativo>
   <!-- Contenido del Componente Alternativo -->
-  <p>Usuario no Logeado</p>
+  <span>Usuario no Logeado</span>
 </ng-template>
 
 <ng-template #director>

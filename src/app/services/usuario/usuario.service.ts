@@ -28,6 +28,10 @@ export class UsuarioService {
 
   }
 
+  validarToken(token:any){
+    return this.http.post(environment.urlApi+"usuario/validarToken", token)
+  }
+
   // errorHandler(error: HttpErrorResponse){
   //   return throwError(error.message)
 

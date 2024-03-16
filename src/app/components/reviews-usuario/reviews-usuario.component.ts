@@ -50,16 +50,6 @@ export class ReviewsUsuarioComponent implements OnInit {
   }
 
   reviewById(review: UsuarioReview):any{ //template: TemplateRef<any>
-    // console.log(review);
-    // // localStorage.setItem("_idReview", review._id.toString());
-    // // const _id = localStorage.getItem('_idReview')
-    // console.log(review._id)
-    // this.peliculaService.getReviewById(review._id)
-    // .subscribe((data: any) => {
-    //   this.review = data.review;
-    //   console.log(this.review)
-    // })
-
     this.review = review;
     console.log(this.review)
     this.formActualizarReview.setValue({
@@ -75,17 +65,13 @@ export class ReviewsUsuarioComponent implements OnInit {
       },
     });
 
-
-    // this.dialogService.openDialogWithTemplate({
-    //   template,
-    // }).afterClosed().subscribe(res => console.log('Dialog with template Close ', res))
-    // this.formActualizarReview.reset();
   }
 
   detalles(pelicula:any): void {
-    // console.log("Palaaaaaaaaaaa",pelicula.pelicula._id)
     localStorage.setItem("_id", pelicula.pelicula._id.toString());
     this.router.navigate(['pelicula']);
   }
+
+
 
 }
