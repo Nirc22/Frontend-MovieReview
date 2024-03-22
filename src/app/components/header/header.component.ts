@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
     this.loginService.getTokenObservable().subscribe(() => {
       this.validar();
     })
-    this.ValidarToken();
+    // this.ValidarToken();
   }
 
   get nombre() {

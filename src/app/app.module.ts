@@ -24,6 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSelectFilterModule } from 'mat-select-filter';
 
 
 import { DirectorComponent } from './components/director/director.component';
@@ -65,7 +67,9 @@ import { ActualizarReviewComponent } from './components/actualizar-review/actual
     MatDialogModule,
     MatToolbarModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule,
+    MatSelectFilterModule
   ],
   providers: [
     {

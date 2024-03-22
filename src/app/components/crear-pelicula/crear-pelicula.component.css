@@ -67,3 +67,11 @@ select{
   background-color: #fef2f2;
 
 }
+
+mat-select{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #fef2f2;
+}

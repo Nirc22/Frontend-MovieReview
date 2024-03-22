@@ -21,6 +21,8 @@ export class CrearPeliculaComponent implements OnInit {
   actores: Actor[] = [];
   generos: Genero[] = [];
   peliculaCrear: Pelicula[] = [];
+  filteredActores: Actor[] = [];
+  selectedOption:any[]=[]
 
 
   formCrearPelicula: FormGroup = this.forBuilder.group({
@@ -47,6 +49,8 @@ export class CrearPeliculaComponent implements OnInit {
     this.getDirectores();
     this.getActores();
     this.getGeneros();
+
+
   }
 
   //sirve para validar los formularios
@@ -76,10 +80,13 @@ export class CrearPeliculaComponent implements OnInit {
       imagenPelicula: file, // Actualiza el valor del campo imagenPelicula
     });
   }
+
+
   registrarPelicula() {
     console.log(this.formCrearPelicula.value)
-    const peliculaData = this.formCrearPelicula.value;
-
+    let peliculaData = this.formCrearPelicula.value;
+    const actorsArray = this.selectedOption.map(actorId => ({ actor: actorId })); // Create objects for each actor ID
+    peliculaData.actores = actorsArray;
     this.peliculaService.crearPelicula(peliculaData).subscribe(
       (response) => {
         console.log('Película creada:', response);
@@ -121,7 +128,9 @@ export class CrearPeliculaComponent implements OnInit {
     this.peliculaService.getActores(environment.urlApi)
       .subscribe((actores: any) => {
         this.actores = actores.actores
+        this.filteredActores = [...this.actores];
         console.log("Actores", this.actores)
+        console.log("AAActores", this.filteredActores)
       });
   }
 
@@ -131,5 +140,17 @@ export class CrearPeliculaComponent implements OnInit {
         this.generos = generos.generos
         console.log("Generos", this.generos)
       });
+  }
+
+  // selectedOption(){
+  //   console.log(this.selectedOption)
+  // }
+
+  filterActores(event: any) {
+    console.log(this.selectedOption);
+    const searchString = event.target.value.toLowerCase(); // Obtener el valor del filtro en minúsculas}
+    this.filteredActores = this.actores.filter(actor =>
+      actor.nombre.toLowerCase().includes(searchString) || actor.apellido.toLowerCase().includes(searchString)
+    )
   }
 }
