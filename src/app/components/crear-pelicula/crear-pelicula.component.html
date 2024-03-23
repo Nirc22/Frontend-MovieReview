@@ -11,20 +11,20 @@
         <!-- <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
           <div *ngIf="nombre.errors?.['required']">El nombre es obligatorio.</div>
         </div> -->
-        <div class="alert alert-danger mt-2" [hidden]="nombre.valid || nombre.pristine && nombre.untouched">
+        <mat-error class="alert alert-danger mt-2" [hidden]="nombre.valid || nombre.pristine && nombre.untouched">
           El nombre es obligatorio.
-        </div>
+        </mat-error>
       </div>
       <div class="input">
+        <!-- <mat-form-field> -->
         <label>Director</label>
-        <select class="form-control" id="director" formControlName="director">
-          <option *ngFor="let director of directores" value={{director._id}}>{{director.nombre}} {{director.apellido}}
-          </option>
-        </select>
-        <!-- <div class="alert alert-danger mt-2"
-          [hidden]="director_id.valid || director_id.pristine && director_id.untouched">
-          El Director es obligatorio.
-        </div> -->
+        <mat-select [(value)]="selectedDirector"
+          formControlName="director"><!--[(value)]="selectedOption"al selecionar una opcion manda el valor a la variable selectedOption-->
+          <mat-select-filter (input)="filterDirectores($event)"></mat-select-filter>
+          <mat-option *ngFor="let director of filteredDirectores" [value]="director._id">
+            {{director.nombre}} {{director.apellido}}
+          </mat-option>
+        </mat-select>
         <mat-error [hidden]="director_id.valid || director_id.pristine && director_id.untouched">
           El Director es obligatorio.
         </mat-error>
@@ -34,9 +34,9 @@
         <select multiple class="form-control" id="actor" formControlName="actor">
           <option *ngFor="let actor of actores" value={{actor._id}}>{{actor.nombre}} {{actor.apellido}}</option>
         </select> -->
-        <!-- <input *ngFor="let actor of actores" type="checkbox" value="{{actor._id}}" /> -->
+      <!-- <input *ngFor="let actor of actores" type="checkbox" value="{{actor._id}}" /> -->
 
-        <!-- <div class="alert alert-danger mt-2" [hidden]="actor_id.dirty || actor_id.untouched">
+      <!-- <div class="alert alert-danger mt-2" [hidden]="actor_id.dirty || actor_id.untouched">
           Elegir el Actor es obligatorio.
         </div>
       </div> -->
@@ -44,38 +44,43 @@
       <div class="input" formGroupName="actores">
         <!-- <mat-form-field> -->
         <label>Actores</label>
-          <!-- <mat-label>Select una opción</mat-label> -->
-          <mat-select [(value)]="selectedOption" formControlName="actor" multiple><!--[(value)]="selectedOption"al selecionar una opcion manda el valor a la variable selectedOption-->
-            <mat-select-filter (input)="filterActores($event)"></mat-select-filter>
-            <mat-option *ngFor="let actor of filteredActores" [value]="actor._id">
-              {{actor.nombre}} {{actor.apellido}}
-            </mat-option>
-          </mat-select>
-          <!-- <mat-error [hidden]="actor_id.valid || actor_id.pristine && actor_id.untouched">
-            Elegir el Actor es obligatorio.
-          </mat-error> -->
-        <!-- </mat-form-field> -->
+        <mat-select [(value)]="selectedActores" formControlName="actor"
+          multiple><!--[(value)]="selectedOption"al selecionar una opcion manda el valor a la variable selectedOption-->
+          <mat-select-filter (input)="filterActores($event)"></mat-select-filter>
+          <mat-option *ngFor="let actor of filteredActores" [value]="actor._id">
+            {{actor.nombre}} {{actor.apellido}}
+          </mat-option>
+        </mat-select>
+        <mat-error [hidden]="actor_id.valid || actor_id.pristine && actor_id.untouched">
+          Elegir Actor es obligatorio.
+        </mat-error>
       </div>
       <div class="input">
         <label>Año</label>
         <input type="date" class="fomr-control" formControlName="anio">
-        <div [hidden]="anio.valid || anio.pristine && anio.untouched">
+        <mat-error [hidden]="anio.valid || anio.pristine && anio.untouched">
           Fecha de estreno es obligatoria.
-        </div>
+        </mat-error>
       </div>
+
       <div class="input" formGroupName="generos">
+        <!-- <mat-form-field> -->
         <label>Generos</label>
-        <select class="form-control" id="genero" formControlName="genero">
-          <option *ngFor="let genero of generos" value={{genero._id}}>{{genero.nombre}}</option>
-        </select>
-        <div class="alert alert-danger mt-2" [hidden]="genero.dirty || genero.untouched">
+        <mat-select [(value)]="selectedGeneros" formControlName="genero"
+          multiple><!--[(value)]="selectedOption"al selecionar una opcion manda el valor a la variable selectedOption-->
+          <mat-select-filter (input)="filterGeneros($event)"></mat-select-filter>
+          <mat-option *ngFor="let genero of filteredGeneros" [value]="genero._id">
+            {{genero.nombre}}
+          </mat-option>
+        </mat-select>
+        <mat-error class="alert alert-danger mt-2" [hidden]="genero.dirty || genero.untouched">
           Elegir el genero es obligatorio.
-        </div>
+        </mat-error>
       </div>
       <div class="button">
 
         <!-- <input type="submit" value="Crear"> -->
-        <button type="submit"  formenctype="multipart/form-data"
+        <button type="submit" formenctype="multipart/form-data"
           value="Submit as Multipart/form-data">Crear</button><!--[disabled]="formCrearPelicula.invalid"-->
       </div>
       <!-- <div class="input" *ngIf="responseService && !responseService.ok">{{ responseService.msg }}</div> -->

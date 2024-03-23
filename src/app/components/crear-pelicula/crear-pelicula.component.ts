@@ -22,18 +22,23 @@ export class CrearPeliculaComponent implements OnInit {
   generos: Genero[] = [];
   peliculaCrear: Pelicula[] = [];
   filteredActores: Actor[] = [];
-  selectedOption:any[]=[]
+  selectedActores:any[]=[];
+  filteredDirectores: Director[] =[];
+  selectedDirector:any[] = [];
+  filteredGeneros: Genero[] = [];
+  selectedGeneros:any[]=[];
+
 
 
   formCrearPelicula: FormGroup = this.forBuilder.group({
     nombre: ['', [Validators.required]],
     director: ['', [Validators.required]],
     actores: new FormGroup({
-      actor: new FormControl(''),
+      actor: new FormControl('',Validators.required),
     }),
     anio: ['', [Validators.required]],
     generos: new FormGroup({
-      genero: new FormControl(''),
+      genero: new FormControl('',Validators.required),
     }),
     calificacion: new FormGroup({
       id: new FormControl(''),
@@ -85,8 +90,10 @@ export class CrearPeliculaComponent implements OnInit {
   registrarPelicula() {
     console.log(this.formCrearPelicula.value)
     let peliculaData = this.formCrearPelicula.value;
-    const actorsArray = this.selectedOption.map(actorId => ({ actor: actorId })); // Create objects for each actor ID
-    peliculaData.actores = actorsArray;
+    const actoresArray = this.selectedActores.map(actorId => ({ actor: actorId })); // Create objects for each actor ID
+    peliculaData.actores = actoresArray;
+    const gennerosArray = this.selectedGeneros.map(generoId => ({ genero: generoId}));
+    peliculaData.generos = gennerosArray;
     this.peliculaService.crearPelicula(peliculaData).subscribe(
       (response) => {
         console.log('Película creada:', response);
@@ -120,6 +127,7 @@ export class CrearPeliculaComponent implements OnInit {
     this.peliculaService.getDirectores(environment.urlApi)
       .subscribe((directores: any) => {
         this.directores = directores.directores;
+        this.filteredDirectores = [...this.directores];
         console.log("Directores", this.directores)
       });
   }
@@ -130,14 +138,15 @@ export class CrearPeliculaComponent implements OnInit {
         this.actores = actores.actores
         this.filteredActores = [...this.actores];
         console.log("Actores", this.actores)
-        console.log("AAActores", this.filteredActores)
+        // console.log("AAActores", this.filteredActores)
       });
   }
 
   getGeneros() {
     this.peliculaService.getGeneros(environment.urlApi)
       .subscribe((generos: any) => {
-        this.generos = generos.generos
+        this.generos = generos.generos;
+        this.filteredGeneros = [...this.generos];
         console.log("Generos", this.generos)
       });
   }
@@ -147,10 +156,26 @@ export class CrearPeliculaComponent implements OnInit {
   // }
 
   filterActores(event: any) {
-    console.log(this.selectedOption);
+    console.log(this.selectedActores);
     const searchString = event.target.value.toLowerCase(); // Obtener el valor del filtro en minúsculas}
     this.filteredActores = this.actores.filter(actor =>
       actor.nombre.toLowerCase().includes(searchString) || actor.apellido.toLowerCase().includes(searchString)
+    )
+  }
+
+  filterDirectores(event: any) {
+    // console.log(this.selectedOption);
+    const searchString = event.target.value.toLowerCase(); // Obtener el valor del filtro en minúsculas}
+    this.filteredDirectores = this.directores.filter(director =>
+      director.nombre.toLowerCase().includes(searchString) || director.apellido.toLowerCase().includes(searchString)
+    )
+  }
+
+  filterGeneros(event: any) {
+    // console.log(this.selectedActores);
+    const searchString = event.target.value.toLowerCase(); // Obtener el valor del filtro en minúsculas}
+    this.filteredGeneros = this.generos.filter(genero =>
+      genero.nombre.toLowerCase().includes(searchString)
     )
   }
 }
