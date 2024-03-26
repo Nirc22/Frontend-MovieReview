@@ -9,6 +9,9 @@ import { DialogService } from 'src/app/services/dialog/dialog.service';
 import { LoginService } from 'src/app/services/auth/login.service';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { GeneroComponent } from '../genero/genero.component';
+
 
 @Component({
   selector: 'app-header',
@@ -26,7 +29,7 @@ export class HeaderComponent implements OnInit {
   rol: any;
   token: any;
 
-  constructor(private peliculaService: PeliculaService, private formBuilder: FormBuilder, private dialogService: DialogService, private loginService: LoginService, private router: Router, private usuarioService: UsuarioService) { }
+  constructor(private peliculaService: PeliculaService, private formBuilder: FormBuilder, private dialogService: DialogService, private loginService: LoginService, private router: Router, private usuarioService: UsuarioService, private matDialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loginService.getTokenObservable().subscribe(() => {
@@ -76,6 +79,7 @@ export class HeaderComponent implements OnInit {
     this.peliculaService.crearDirector(this.formReparto.value).subscribe((response) => {
       console.log("Director creado", response);
       alert(response.msg);
+      location.reload();
       this.formReparto.reset();
     },
       (error) => {
@@ -91,6 +95,7 @@ export class HeaderComponent implements OnInit {
     this.peliculaService.crearActor(this.formReparto.value).subscribe((response) => {
       console.log("Actor creado", response);
       alert(response.msg);
+      location.reload();
       this.formReparto.reset();
     },
       (error) => {
@@ -99,6 +104,10 @@ export class HeaderComponent implements OnInit {
         this.formReparto.reset();
       }
     )
+  }
+
+  crearGenero(){
+    const dialogRef = this.matDialog.open(GeneroComponent);
   }
 
   logOut() {

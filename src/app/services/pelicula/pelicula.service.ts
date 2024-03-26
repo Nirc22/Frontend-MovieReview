@@ -71,6 +71,11 @@ export class PeliculaService {
     return this.http.get<Genero>(environment.urlApi+"genero/get")
   }
 
+  crearGenero(genero:any){
+    return this.http.post<any>(environment.urlApi+"genero/create", genero)
+
+  }
+
   calificar(calificacion:any){
     return this.http.post<any>(environment.urlApi+"usuarioReview/create", calificacion)
   }

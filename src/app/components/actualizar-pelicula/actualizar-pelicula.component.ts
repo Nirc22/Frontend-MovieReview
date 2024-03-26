@@ -19,17 +19,23 @@ export class ActualizarPeliculaComponent implements OnInit {
   directores: Director[] = [];
   actores: Actor[] = [];
   generos: Genero[] = [];
+  filteredActores: Actor[] = [];
+  selectedActores:any[]=[];
+  filteredDirectores: Director[] =[];
+  selectedDirector:any[] = [];
+  filteredGeneros: Genero[] = [];
+  selectedGeneros:any[]=[];
   // peliculaCrear: Pelicula[] = [];
 
   formActualizarPelicula: FormGroup = this.forBuilder.group({
     nombre: ['', [Validators.required]],
     director: ['', [Validators.required]],
     actores: new FormGroup({
-      actor: new FormControl(''),
+      actor: new FormControl('', Validators.required),
     }),
     anio: ['', [Validators.required]],
     generos: new FormGroup({
-      genero: new FormControl(''),
+      genero: new FormControl('', Validators.required),
     }),
     // calificacion: new FormGroup({
     //   id: new FormControl(''),
@@ -73,25 +79,36 @@ export class ActualizarPeliculaComponent implements OnInit {
       .subscribe((data: any) => {
         this.pelicula = data.pelicula;
         console.log("Holaaaaa",this.pelicula)
-        this.formActualizarPelicula.setValue({
+        const actoresIDs: string[] = data.pelicula.actores.map((actor: { actor: { _id: string } }) => actor.actor._id);
+        console.log("IDDDD",actoresIDs)
+        const generosIDs: string[] = data.pelicula.generos.map((genero: { genero: { _id: string } }) => genero.genero._id);
+        console.log("Generos",generosIDs)
+
+        this.formActualizarPelicula.patchValue({
           nombre: data.pelicula.nombre,
           director: data.pelicula.director._id,
-          actores: {actor: data.pelicula.actores[0].actor._id},
+          actores: {actor: actoresIDs},
+          // actores: {actor: data.pelicula.actores[0].actor._id},
           anio: data.pelicula.anio.substring(0,10),//para sacar la fecha en formato yyyy-MM-dd
-          generos: {genero: data.pelicula.generos[0].genero._id},
+          generos: {genero: generosIDs},
+          // generos: {genero: data.pelicula.generos[0].genero._id},
         })
+        console.log("Formulario by ID",this.formActualizarPelicula.value)
       })
 
   }
 
   actualizarPelicula() {
-    console.log(this.formActualizarPelicula.value)
     const _id = localStorage.getItem('_id');
-
     const peliculaData = this.formActualizarPelicula.value;
 
-    peliculaData.anio = new Date(peliculaData.anio);
+    const actoresArrays:Actor[] = this.formActualizarPelicula.value.actores.actor;
+    const actoresArray = actoresArrays.map(actorId => ({ actor: actorId })); // Create objects for each actor ID
+    peliculaData.actores = actoresArray;
 
+    const generosArrays:Genero[] = this.formActualizarPelicula.value.generos.genero;
+    const generosArray = generosArrays.map(generoId => ({ genero: generoId}));
+    peliculaData.generos = generosArray;
 
     this.peliculaService.actualizarPelicula(peliculaData, _id).subscribe(
       (response) => {
@@ -106,12 +123,11 @@ export class ActualizarPeliculaComponent implements OnInit {
     );
   }
 
-
-
   getDirectores() {
     this.peliculaService.getDirectores(environment.urlApi)
       .subscribe((directores: any) => {
         this.directores = directores.directores;
+        this.filteredDirectores = [...this.directores];
         console.log("Directores", this.directores)
       });
   }
@@ -119,7 +135,8 @@ export class ActualizarPeliculaComponent implements OnInit {
   getActores() {
     this.peliculaService.getActores(environment.urlApi)
       .subscribe((actores: any) => {
-        this.actores = actores.actores
+        this.actores = actores.actores;
+        this.filteredActores = [...this.actores];
         console.log("Actores", this.actores)
       });
   }
@@ -127,9 +144,40 @@ export class ActualizarPeliculaComponent implements OnInit {
   getGeneros() {
     this.peliculaService.getGeneros(environment.urlApi)
       .subscribe((generos: any) => {
-        this.generos = generos.generos
+        this.generos = generos.generos;
+        this.filteredGeneros = [...this.generos];
         console.log("Generos", this.generos)
       });
+  }
+
+  filterActores(event: any) {
+    console.log(this.selectedActores);
+    const searchString = event.target.value.toLowerCase(); // Obtener el valor del filtro en minúsculas}
+    this.filteredActores = this.actores.filter(actor =>
+      actor.nombre.toLowerCase().includes(searchString) || actor.apellido.toLowerCase().includes(searchString)
+    )
+  }
+
+  filterDirectores(event: any) {
+    // console.log(this.selectedOption);
+    const searchString = event.target.value.toLowerCase(); // Obtener el valor del filtro en minúsculas}
+    this.filteredDirectores = this.directores.filter(director =>
+      director.nombre.toLowerCase().includes(searchString) || director.apellido.toLowerCase().includes(searchString)
+    )
+  }
+
+  filterGeneros(event: any) {
+    // console.log(this.selectedActores);
+    const searchString = event.target.value.toLowerCase(); // Obtener el valor del filtro en minúsculas}
+    this.filteredGeneros = this.generos.filter(genero =>
+      genero.nombre.toLowerCase().includes(searchString)
+    )
+  }
+
+  volver(): void {
+    // console.log(pelicula)
+    // localStorage.setItem("_id", pelicula._id.toString());
+    this.router.navigate(['peliculaAdmin']);
   }
 
 }

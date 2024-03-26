@@ -1,0 +1,21 @@
+
+  <div class="dialog">
+    <h1 mat-dialog-title>Genero</h1>
+    <div mat-dialog-content>
+      <form class="form" [formGroup]="formGenero">
+        <div class="formulario">
+          <div class="input">
+            <label>Nombre</label>
+            <input type="text" class="fomr-control" formControlName="nombre">
+            <div [hidden]="nombre.valid || nombre.pristine && nombre.untouched">
+              El nombre es obligatorio.
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close [disabled]="formGenero.invalid" (click)="crearGenero()">Enviar</button>
+      <button mat-button mat-dialog-close>Cerrar</button>
+    </div>
+  </div>

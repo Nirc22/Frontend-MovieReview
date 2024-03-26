@@ -10,6 +10,8 @@
       <button class="menu" mat-menu-item *ngIf="rol" [routerLink]="['crearPelicula']">Crear Pelicula</button>
       <button class="menu" mat-menu-item *ngIf="rol" (click)="openDialog(director)">Director</button>
       <button class="menu" mat-menu-item *ngIf="rol" (click)="openDialog(actor)">Actor</button>
+      <button class="menu" mat-menu-item *ngIf="rol" (click)="crearGenero()">Genero</button>
+
 
 
       <button class="menu" mat-menu-item *ngIf="!rol" [routerLink]="['dashboard']">Peliculas</button>

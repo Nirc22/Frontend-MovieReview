@@ -32,6 +32,7 @@ import { DirectorComponent } from './components/director/director.component';
 import { ActorComponent } from './components/actor/actor.component';
 import { ReviewsUsuarioComponent } from './components/reviews-usuario/reviews-usuario.component';
 import { ActualizarReviewComponent } from './components/actualizar-review/actualizar-review.component';
+import { GeneroComponent } from './components/genero/genero.component';
 
 
 
@@ -55,6 +56,7 @@ import { ActualizarReviewComponent } from './components/actualizar-review/actual
     ActorComponent,
     ReviewsUsuarioComponent,
     ActualizarReviewComponent,
+    GeneroComponent,
 
   ],
   imports: [

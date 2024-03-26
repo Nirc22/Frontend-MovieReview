@@ -53,8 +53,8 @@ button:hover{
 
 .button{
   display: flex;
-  flex-direction: column;
-  align-self: stretch;
+  flex-direction: row;
+  justify-content:space-between;
   padding: 10px 5px;
   color: #fef2f2;
   font-size: 15px;
@@ -66,4 +66,12 @@ select{
   border-radius: 3px;
   background-color: #fef2f2;
 
+}
+
+mat-select{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #fef2f2;
 }

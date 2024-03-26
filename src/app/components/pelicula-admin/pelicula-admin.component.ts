@@ -36,4 +36,8 @@ export class PeliculaAdminComponent implements OnInit {
     this.router.navigate(['actualizarPelicula'])
   }
 
+  volver(): void {
+    this.router.navigate(['dashboardAdmin']);
+  }
+
 }
