@@ -8,9 +8,9 @@
       <div class="input">
         <label for="dsnombre" class="form-label">Nombre</label>
         <input type="text" class="fomr-control" id="nombre" formControlName="nombre">
-        <div class="alert alert-danger mt-2" [hidden]="nombre.valid || nombre.pristine && nombre.untouched">
+        <mat-error class="alert alert-danger mt-2" [hidden]="nombre.valid || nombre.pristine && nombre.untouched">
           El nombre es obligatorio.
-        </div>
+        </mat-error>
       </div>
       <div class="input">
         <!-- <mat-form-field> -->
@@ -48,9 +48,9 @@
       <div class="input">
         <label>Año</label>
         <input type="date" class="fomr-control" formControlName="anio">
-        <div [hidden]="anio.valid || anio.pristine && anio.untouched">
+        <mat-error [hidden]="anio.valid || anio.pristine && anio.untouched">
           Fecha de estreno es obligatoria.
-        </div>
+        </mat-error>
       </div>
 
       <div class="input" formGroupName="generos">

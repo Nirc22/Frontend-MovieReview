@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
 import { PeliculaService } from 'src/app/services/pelicula/pelicula.service';
 import { Router } from '@angular/router';
 
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class PeliculaAdminComponent implements OnInit {
 
   pelicula: any = [];
+  imagen: any = "../../assets/SinImagen.jpg";
 
   constructor(private peliculaService: PeliculaService, private router:Router) { }
 

@@ -1,0 +1,48 @@
+.dialog{
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  align-items: center;
+  background-color: #470a16;
+  border-radius: 7px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+  color: #fef2f2;
+}
+
+.input{
+  display: flex;
+  flex-direction: column;
+}
+
+input{
+  padding: 10px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 3px;
+  /* font-size: 15px; */
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.button{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* background-color: red; */
+}
+
+button{
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #961b34;
+  color: #fef2f2;
+  font-size: 15px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+button:hover{
+  background-color: #d02941;
+  cursor: pointer;
+  transition: 0.3s;
+}

@@ -40,22 +40,22 @@
           <div class="input">
             <label>Nombre</label>
             <input type="text" class="fomr-control" formControlName="nombre">
-            <div [hidden]="nombre.valid || nombre.pristine && nombre.untouched">
+            <mat-error [hidden]="nombre.valid || nombre.pristine && nombre.untouched">
               El nombre es obligatorio.
-            </div>
+            </mat-error>
           </div>
           <div class="input">
             <label>Apellido</label>
             <input type="text" class="fomr-control" formControlName="apellido">
-            <div [hidden]="apellido.valid || apellido.pristine && apellido.untouched">
+            <mat-error [hidden]="apellido.valid || apellido.pristine && apellido.untouched">
               El apellido es obligatorio.
-            </div>
+            </mat-error>
           </div>
         </div>
       </form>
     </div>
-    <div mat-dialog-actions>
-      <button mat-button mat-dialog-close [disabled]="formReparto.invalid" (click)="crearDirector()">Enviar</button>
+    <div class="button" mat-dialog-actions>
+      <button mat-button mat-dialog-close [disabled]="formReparto.invalid" (click)="crearDirector()">Crear</button>
       <button mat-button mat-dialog-close>Cerrar</button>
     </div>
   </div>
@@ -70,22 +70,22 @@
           <div class="input">
             <label>Nombre</label>
             <input type="text" class="fomr-control" formControlName="nombre">
-            <div [hidden]="nombre.valid || nombre.pristine && nombre.untouched">
+            <mat-error [hidden]="nombre.valid || nombre.pristine && nombre.untouched">
               El nombre es obligatorio.
-            </div>
+            </mat-error>
           </div>
           <div class="input">
             <label>Apellido</label>
             <input type="text" class="fomr-control" formControlName="apellido">
-            <div [hidden]="apellido.valid || apellido.pristine && apellido.untouched">
+            <mat-error [hidden]="apellido.valid || apellido.pristine && apellido.untouched">
               El apellido es obligatorio.
-            </div>
+            </mat-error>
           </div>
         </div>
       </form>
     </div>
-    <div mat-dialog-actions>
-      <button mat-button mat-dialog-close [disabled]="formReparto.invalid" (click)="crearActor()">Enviar</button>
+    <div class="button" mat-dialog-actions>
+      <button mat-button mat-dialog-close [disabled]="formReparto.invalid" (click)="crearActor()">Crear</button>
       <button mat-button mat-dialog-close>Cerrar</button>
     </div>
   </div>

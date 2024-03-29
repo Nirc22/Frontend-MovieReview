@@ -93,7 +93,7 @@ export class ActualizarPeliculaComponent implements OnInit {
           generos: {genero: generosIDs},
           // generos: {genero: data.pelicula.generos[0].genero._id},
         })
-        console.log("Formulario by ID",this.formActualizarPelicula.value)
+        // console.log("Formulario by ID",this.formActualizarPelicula.value)
       })
 
   }

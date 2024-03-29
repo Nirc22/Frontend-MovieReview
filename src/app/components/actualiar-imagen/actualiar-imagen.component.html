@@ -1,16 +1,21 @@
 <div id="componente">
   <form class="form" id="contact-form" enctype="multipart/form-data" [formGroup]="formImagen" (ngSubmit)="actualizarImagen()"> <!--(ngSubmit)="crearPersona()"-->
     <div class="formulario">
+      <h1>{{pelicula.nombre}}</h1>
 
       <div class="input" formGroupName="imagenPelicula">
-        <label>Imagen</label>
+        <!-- <label>Imagen</label> -->
+        <img *ngIf="pelicula.imagenPelicula && !imagenPreview" src="http://localhost:4001/{{pelicula.imagenPelicula}}">
+        <img *ngIf="!pelicula.imagenPelicula && !imagenPreview" src="{{imagen}}">
+        <img *ngIf="imagenPreview" [src]="imagenPreview" alt="Vista previa de la imagen">
         <input type="file" id="file" formControlName="imagenPelicula" (change)="capturarImagen($event)">  <!--(change)="capturarImagen($event)"-->
-        <img *ngIf="imagen" class="fomr-control" src="{{imagen}}">
       </div>
       <div class="button">
 
         <!-- <input type="submit" value="Crear"> -->
-        <button type="submit" formenctype="multipart/form-data" value="Submit as Multipart/form-data">Crear</button>
+        <button type="submit" formenctype="multipart/form-data" value="Submit as Multipart/form-data" >Actualizar</button><!--[disabled]="formImagen.invalid"-->
+        <button type="button" (click)="volver()">Volver</button><!--[routerLink]="['peliculaAdmin']"-->
+
       </div>
       <!-- <div class="input" *ngIf="responseService && !responseService.ok">{{ responseService.msg }}</div> -->
     </div>

@@ -21,6 +21,8 @@ export class DasboardAdminComponent implements OnInit {
 
   peliculas: Pelicula[] = [];
   pelicula: Pelicula[] = [];
+  imagen: any = "../../assets/SinImagen.jpg";
+
 
 
   constructor(private peliculaService: PeliculaService, private router: Router, private formBuilder: FormBuilder, private dialogService: DialogService) { }

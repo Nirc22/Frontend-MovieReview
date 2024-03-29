@@ -7,15 +7,16 @@
           <div class="input">
             <label>Nombre</label>
             <input type="text" class="fomr-control" formControlName="nombre">
-            <div [hidden]="nombre.valid || nombre.pristine && nombre.untouched">
+            <mat-error [hidden]="nombre.valid || nombre.pristine && nombre.untouched">
               El nombre es obligatorio.
-            </div>
+            </mat-error>
           </div>
+        </div>
+        <div class="button"> <!--mat-dialog-actions-->
+          <button mat-button mat-dialog-close [disabled]="formGenero.invalid" (click)="crearGenero()">Enviar</button>
+          <button mat-button mat-dialog-close>Cerrar</button>
         </div>
       </form>
     </div>
-    <div mat-dialog-actions>
-      <button mat-button mat-dialog-close [disabled]="formGenero.invalid" (click)="crearGenero()">Enviar</button>
-      <button mat-button mat-dialog-close>Cerrar</button>
-    </div>
+
   </div>
