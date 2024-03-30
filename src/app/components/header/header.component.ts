@@ -34,8 +34,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.loginService.getTokenObservable().subscribe(() => {
       this.validar();
+      this.ValidarToken();
+
     })
-    // this.ValidarToken();
   }
 
   get nombre() {
@@ -124,6 +125,8 @@ export class HeaderComponent implements OnInit {
       }, (error) =>{
         console.error(error.error.msg);
         this.loginService.deleteToken();
+        this.router.navigate(['dashboar']);
+
         // alert(error.error.msg)
       });
     } else {

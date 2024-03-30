@@ -1,23 +1,15 @@
 <div id="contenedor">
-  <div>
-    <input type="text" [(ngModel)]="nombrePelicula" placeholder="Nombre de la película">
-    <button (click)="buscar()">Buscar</button>
-  </div>
-  <!-- <form [formGroup]="formBucar" (ngSubmit)="buscar()">
-    <input type="text" formControlName="nombre" placeholder="Nombre de la película">
-    <button>Buscar</button>
-  </form> -->
-  <div class="peliculas">
-    <div class="elementos" *ngFor="let pelicula of peliculas">
-      <h1>{{pelicula.nombre}}</h1>
-      <img *ngIf="pelicula.imagenPelicula" src="http://localhost:4001/{{pelicula.imagenPelicula}}" (click)="actualizar(pelicula)">
-      <img *ngIf="!pelicula.imagenPelicula" src="{{imagen}}" (click)="actualizar(pelicula)">
-      <!--Retirado por exceso de info-->
-      <!-- <p>Calificación: {{pelicula.calificacion.calificacion}}</p> -->
-      <!-- <div class="button"> -->
-      <!-- <button (click)="openDialog(director)">Director</button> -->
-      <!-- <button>Calificar</button> -->
-      <!-- </div> -->
+  <div id="buscador">
+    <div class="flex">
+      <input class="buscador" type="text" [(ngModel)]="nombrePelicula" (keydown.enter)="buscar()">
+      <button (click)="buscar()">Buscar</button>
     </div>
   </div>
-</div>
+  <div class="peliculas">
+    <div class="elementos" *ngFor="let pelicula of peliculas">
+      <h3>{{pelicula.nombre}}</h3>
+      <img *ngIf="pelicula.imagenPelicula" src="http://localhost:4001/{{pelicula.imagenPelicula}}"
+        (click)="actualizar(pelicula)">
+      <img *ngIf="!pelicula.imagenPelicula" src="{{imagen}}" (click)="actualizar(pelicula)">
+    </div>
+  </div>

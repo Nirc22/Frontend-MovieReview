@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
   peliculas: Pelicula[] = [];
   pelicula: any;
   peliculasJSON: any;
-
+  imagen: any = "../../assets/SinImagen.jpg";
 
   constructor(private peliculaService: PeliculaService, private router: Router, private dialogService: DialogService, private formBuilder: FormBuilder) { }
 

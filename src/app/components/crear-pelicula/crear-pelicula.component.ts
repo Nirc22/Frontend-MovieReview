@@ -7,6 +7,8 @@ import { Pelicula } from 'src/app/interfaces/pelicula';
 import { PeliculaService } from 'src/app/services/pelicula/pelicula.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-crear-pelicula',
@@ -46,7 +48,7 @@ export class CrearPeliculaComponent implements OnInit {
     imagenPelicula: ['', [Validators.required]],
   })
 
-  constructor(private forBuilder: FormBuilder, private peliculaService: PeliculaService, private router:Router) { }
+  constructor(private forBuilder: FormBuilder, private peliculaService: PeliculaService, private router:Router, private location: Location) { }
 
   ngOnInit(): void {
 
@@ -177,5 +179,9 @@ export class CrearPeliculaComponent implements OnInit {
     this.filteredGeneros = this.generos.filter(genero =>
       genero.nombre.toLowerCase().includes(searchString)
     )
+  }
+
+  volver(): void {
+    this.location.back();
   }
 }

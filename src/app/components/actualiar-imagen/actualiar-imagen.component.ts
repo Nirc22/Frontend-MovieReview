@@ -75,8 +75,6 @@ export class ActualiarImagenComponent implements OnInit {
   }
 
   volver(): void {
-    // console.log(pelicula)
-    // localStorage.setItem("_id", pelicula._id.toString());
     this.router.navigate(['peliculaAdmin']);
   }
 

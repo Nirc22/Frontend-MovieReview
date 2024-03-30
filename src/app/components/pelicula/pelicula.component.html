@@ -2,10 +2,11 @@
   <div class="pelicula">
     <div class="elementos">
       <h1>{{pelicula.nombre}}</h1>
-      <img src="http://localhost:4001/{{pelicula.imagenPelicula}}">
+      <img *ngIf="pelicula.imagenPelicula" src="http://localhost:4001/{{pelicula.imagenPelicula}}">
+      <img *ngIf="!pelicula.imagenPelicula" src="{{imagen}}">
     </div>
     <div>
-      <div>
+      <div class="info">
         <div class="elementos">
           <h3>Director</h3>
           <p>{{pelicula.director.nombre}} {{pelicula.director.apellido}}</p>
@@ -25,8 +26,12 @@
           <p>{{genero.genero.nombre}}</p>
         </div>
         <div class="elementos">
-          <h3>Calificación</h3>
-          <p>Calificación: {{pelicula.calificacion.calificacion.toFixed(1)}}</p>
+          <h3>Calificación:</h3>
+          <p>{{pelicula.calificacion.calificacion.toFixed(1)}}</p>
+        </div>
+        <div class="button">
+          <button type="button" (click)="volver()">Volver</button><!--[routerLink]="['peliculaAdmin']"-->
+
         </div>
       </div>
     </div>

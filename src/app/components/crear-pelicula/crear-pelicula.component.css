@@ -53,8 +53,8 @@ button:hover{
 
 .button{
   display: flex;
-  flex-direction: column;
-  align-self: stretch;
+  flex-direction: row;
+  justify-content: space-between;
   padding: 10px 5px;
   color: #fef2f2;
   font-size: 15px;

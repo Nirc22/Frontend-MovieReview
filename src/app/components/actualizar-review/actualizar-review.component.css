@@ -1,7 +1,60 @@
 .dialog{
-  background-color: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fef2f2;
+  background-color: #470a16;
+  border-radius: 7px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  width: 250px;
+  /* margin-top: 70px; */
+
 }
 
 #imgDialog{
-  height: 200px;
+  width: 160px;
+  border-radius: 7px;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+  max-height: 350px;
+}
+
+.input{
+  display: flex;
+  flex-direction: column;
+  width: 160px;
+}
+
+input{
+  width: 140px;
+  padding: 10px;
+  /* margin: 10px; */
+  border: none;
+  border-radius: 7px;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+  max-height: 350px;
+}
+
+.button{
+  display: flex;
+  flex-direction: row;
+  width: 160px;
+  justify-content: space-between;
+}
+
+button{
+  padding: 10px;
+  /* margin: 10px; */
+  border: none;
+  border-radius: 7px;
+  background-color: #961b34;
+  color: #fef2f2;
+  font-size: 15px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+button:hover{
+  background-color: #d02941;
+  cursor: pointer;
+  transition: 0.3s;
 }

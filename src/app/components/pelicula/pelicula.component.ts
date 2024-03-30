@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { Pelicula } from 'src/app/interfaces/pelicula';
 import { PeliculaService } from 'src/app/services/pelicula/pelicula.service';
 
@@ -10,8 +12,11 @@ import { PeliculaService } from 'src/app/services/pelicula/pelicula.service';
 export class PeliculaComponent implements OnInit {
 
   pelicula: any = [];
+  rutaAnterior: string = "";
+  imagen: any = "../../assets/SinImagen.jpg";
 
-  constructor(private peliculaService: PeliculaService) { }
+
+  constructor(private peliculaService: PeliculaService, private router:Router, private location: Location) { }
 
   ngOnInit(): void {
     this.getPeliculaById();
@@ -25,6 +30,10 @@ export class PeliculaComponent implements OnInit {
         console.log(this.pelicula)
       })
 
+  }
+
+  volver(): void {
+    this.location.back();
   }
 
 }

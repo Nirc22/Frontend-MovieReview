@@ -8,7 +8,9 @@
   <div class="peliculas">
     <div class="elementos" *ngFor="let pelicula of peliculas">
       <h3>{{pelicula.nombre}}</h3>
-      <img src="http://localhost:4001/{{pelicula.imagenPelicula}}" (click)="detalles(pelicula)">
+      <img *ngIf="pelicula.imagenPelicula" src="http://localhost:4001/{{pelicula.imagenPelicula}}" (click)="detalles(pelicula)">
+      <img *ngIf="!pelicula.imagenPelicula" src="{{imagen}}" (click)="detalles(pelicula)">
+
       <!--Retirado por exceso de info-->
       <p>Calificación: {{pelicula.calificacion.calificacion.toFixed(1)}}</p><!--.toFixed(1) -->
       <!--toFixed(1) para mostrar una sola decimal-->
@@ -24,39 +26,33 @@
 
 <ng-template #template1>
   <div class="dialog">
-    <h1>{{pelicula.nombre}}</h1>
-    <img id="imgDialog" src="http://localhost:4001/{{pelicula.imagenPelicula}}">
-    <h1 mat-dialog-title>Calificación</h1>
-    <div mat-dialog-content>
-      <!-- <div id="contenedor"> -->
-      <form class="form" [formGroup]="formCalificacion"> <!--(ngSubmit)="calificar()"-->
-        <div class="formulario">
-          <div class="input">
-            <!-- <label>Calificacion</label> -->
-            <input type="number" class="fomr-control" formControlName="calificacion">
-            <div *ngIf="calificacion.invalid && (calificacion.dirty || calificacion.touched)">
-              <div *ngIf="calificacion.errors?.['required']">La calificación es obligatoria.</div>
-              <div *ngIf="calificacion.errors?.['min']">La calificación debe ser mayor o igual a 0.</div>
-              <div *ngIf="calificacion.errors?.['max']">La calificación debe ser menor o igual a 5.</div>
+    <!-- <div class="calificacion"> -->
+      <h1>{{pelicula.nombre}}</h1>
+      <img id="imgDialog" src="http://localhost:4001/{{pelicula.imagenPelicula}}">
+      <h1 mat-dialog-title>Calificación</h1>
+      <div mat-dialog-content>
+        <!-- <div id="contenedor"> -->
+        <form class="form" [formGroup]="formCalificacion"> <!--(ngSubmit)="calificar()"-->
+          <div class="formulario">
+            <div class="input">
+              <!-- <label>Calificacion</label> -->
+              <input type="number" class="fomr-control" formControlName="calificacion">
+              <div *ngIf="calificacion.invalid && (calificacion.dirty || calificacion.touched)">
+                <mat-error *ngIf="calificacion.errors?.['required']">La calificación es obligatoria.</mat-error>
+                <mat-error *ngIf="calificacion.errors?.['min']">La calificación debe ser mayor o igual a 0.</mat-error>
+                <mat-error *ngIf="calificacion.errors?.['max']">La calificación debe ser menor o igual a 5.</mat-error>
+              </div>
             </div>
           </div>
-        </div>
-      </form>
+        </form>
 
-      <!-- </div> -->
+        <!-- </div> -->
+      </div>
+      <div class="buttonCalificacion" mat-dialog-actions>
+        <button mat-button mat-dialog-close [disabled]="formCalificacion.invalid" (click)="calificar()">Enviar</button>
+        <button mat-button mat-dialog-close>Cerrar</button>
+      </div>
     </div>
-    <div mat-dialog-actions>
-      <button mat-button mat-dialog-close [disabled]="formCalificacion.invalid" (click)="calificar()">Enviar</button>
-      <button mat-button mat-dialog-close>Close</button>
-    </div>
-  </div>
+  <!-- </div> -->
 </ng-template>
 
-<!-- <p>{{pelicula.director.nombre}} {{pelicula.director.apellido}}</p>
-<div *ngFor="let actor of pelicula.actores">
-  <p>{{actor.actor.nombre}} {{actor.actor.apellido}}</p>
-</div>
-<p>{{pelicula.anio}}</p>
-<div *ngFor="let genero of pelicula.generos">
-  <p>{{genero.genero.nombre}}</p>
-</div> -->
