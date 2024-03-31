@@ -8,10 +8,10 @@ export const environment = {
   // urlApi:'http://localhost:4001/api/',
   // urlImagen: 'http://localhost:4001/',
 
-  urlHost: 'localhost:4001/',
+  // urlHost: 'localhost:4001/',
   urlApi:'https://backend-moviereviews.onrender.com/api/',
   urlImagen:'https://backend-moviereviews.onrender.com/',
-  userId:1
+  // userId:1
 };
 
 /*
