@@ -47,7 +47,8 @@ export class ActualizarReviewComponent implements OnInit {
     this.peliculaService.actualizarCalificacion(this.data.reviewData._id ,reviewData).subscribe(
       (response) => {
         console.log('Review Actualizada:', response);
-        location.reload();
+        this.router.navigate([this.router.url]);
+        // location.reload();
       },
       (error) => {
         console.error('Error al actualizar Review:', error);
