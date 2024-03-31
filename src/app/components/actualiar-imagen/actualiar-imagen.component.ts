@@ -3,6 +3,7 @@ import { FormBuilder, NgForm, FormControl, FormGroup, Validators } from '@angula
 import { Router } from '@angular/router';
 import { Pelicula } from 'src/app/interfaces/pelicula';
 import { PeliculaService } from 'src/app/services/pelicula/pelicula.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -15,6 +16,8 @@ export class ActualiarImagenComponent implements OnInit {
   imagen: any = "../../assets/SinImagen.jpg";
   imagenPreview: any | ArrayBuffer;
   pelicula:any=[];
+  environment: any = environment.urlImagen;
+
 
   formImagen: FormGroup = this.formBuilder.group({
     imagenPelicula: ['', [Validators.required]],

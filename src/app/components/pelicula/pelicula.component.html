@@ -2,7 +2,7 @@
   <div class="pelicula">
     <div class="elementos">
       <h1>{{pelicula.nombre}}</h1>
-      <img *ngIf="pelicula.imagenPelicula" src="http://localhost:4001/{{pelicula.imagenPelicula}}">
+      <img *ngIf="pelicula.imagenPelicula" src="{{environment}}{{pelicula.imagenPelicula}}">
       <img *ngIf="!pelicula.imagenPelicula" src="{{imagen}}">
     </div>
     <div>

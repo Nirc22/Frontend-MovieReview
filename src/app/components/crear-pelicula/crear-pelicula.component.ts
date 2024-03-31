@@ -45,7 +45,7 @@ export class CrearPeliculaComponent implements OnInit {
     calificacion: new FormGroup({
       id: new FormControl(''),
     }),
-    imagenPelicula: ['', [Validators.required]],
+    imagenPelicula: [''],
   })
 
   constructor(private forBuilder: FormBuilder, private peliculaService: PeliculaService, private router:Router, private location: Location) { }

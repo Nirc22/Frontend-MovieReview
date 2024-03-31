@@ -8,7 +8,8 @@
   <div class="peliculas">
     <div class="elementos" *ngFor="let pelicula of peliculas">
       <h3>{{pelicula.nombre}}</h3>
-      <img *ngIf="pelicula.imagenPelicula" src="http://localhost:4001/{{pelicula.imagenPelicula}}" (click)="detalles(pelicula)">
+      <!-- <img *ngIf="pelicula.imagenPelicula" src="http://localhost:4001/{{pelicula.imagenPelicula}}" (click)="detalles(pelicula)"> -->
+      <img *ngIf="pelicula.imagenPelicula" src="{{environment}}{{pelicula.imagenPelicula}}" (click)="detalles(pelicula)">
       <img *ngIf="!pelicula.imagenPelicula" src="{{imagen}}" (click)="detalles(pelicula)">
 
       <!--Retirado por exceso de info-->
@@ -28,7 +29,7 @@
   <div class="dialog">
     <!-- <div class="calificacion"> -->
       <h1>{{pelicula.nombre}}</h1>
-      <img id="imgDialog" src="http://localhost:4001/{{pelicula.imagenPelicula}}">
+      <img id="imgDialog" src="{{environment}}{{pelicula.imagenPelicula}}">
       <h1 mat-dialog-title>Calificación</h1>
       <div mat-dialog-content>
         <!-- <div id="contenedor"> -->

@@ -5,7 +5,7 @@
 
       <div class="input" formGroupName="imagenPelicula">
         <!-- <label>Imagen</label> -->
-        <img *ngIf="pelicula.imagenPelicula && !imagenPreview" src="http://localhost:4001/{{pelicula.imagenPelicula}}">
+        <img *ngIf="pelicula.imagenPelicula && !imagenPreview" src="{{environment}}{{pelicula.imagenPelicula}}">
         <img *ngIf="!pelicula.imagenPelicula && !imagenPreview" src="{{imagen}}">
         <img *ngIf="imagenPreview" [src]="imagenPreview" alt="Vista previa de la imagen">
         <input type="file" id="file" formControlName="imagenPelicula" (change)="capturarImagen($event)">  <!--(change)="capturarImagen($event)"-->

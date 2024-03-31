@@ -8,8 +8,13 @@
   <div class="peliculas">
     <div class="elementos" *ngFor="let pelicula of peliculas">
       <h3>{{pelicula.nombre}}</h3>
-      <img *ngIf="pelicula.imagenPelicula" src="http://localhost:4001/{{pelicula.imagenPelicula}}"
-        (click)="actualizar(pelicula)">
+      <!-- <img *ngIf="pelicula.imagenPelicula" src="http://localhost:4001/{{pelicula.imagenPelicula}}"
+        (click)="actualizar(pelicula)"> -->
+
+      <!-- <img *ngIf="pelicula.imagenPelicula" src="https://backend-moviereviews.onrender.com/{{pelicula.imagenPelicula}}" (click)="actualizar(pelicula)"> -->
+
+      <img *ngIf="pelicula.imagenPelicula" src="{{environment}}{{pelicula.imagenPelicula}}" (click)="actualizar(pelicula)">
+
       <img *ngIf="!pelicula.imagenPelicula" src="{{imagen}}" (click)="actualizar(pelicula)">
     </div>
   </div>

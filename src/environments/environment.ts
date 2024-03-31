@@ -4,8 +4,13 @@
 
 export const environment = {
   production: false,
+  // urlHost: 'localhost:4001/',
+  // urlApi:'http://localhost:4001/api/',
+  // urlImagen: 'http://localhost:4001/',
+
   urlHost: 'localhost:4001/',
-  urlApi:'http://localhost:4001/api/',
+  urlApi:'https://backend-moviereviews.onrender.com/api/',
+  urlImagen:'https://backend-moviereviews.onrender.com/',
   userId:1
 };
 

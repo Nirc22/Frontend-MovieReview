@@ -5,6 +5,7 @@ import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { PeliculaService } from 'src/app/services/pelicula/pelicula.service';
 import { Router } from '@angular/router';
 import { Pelicula } from 'src/app/interfaces/pelicula';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -13,6 +14,9 @@ import { Pelicula } from 'src/app/interfaces/pelicula';
   styleUrls: ['./actualizar-review.component.css']
 })
 export class ActualizarReviewComponent implements OnInit {
+
+  environment: any = environment.urlImagen;
+
 
   formActualizarReview: FormGroup = this.formBuilder.group({
     usuario: [''],

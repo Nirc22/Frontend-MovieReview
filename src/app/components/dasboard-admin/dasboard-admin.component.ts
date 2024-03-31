@@ -22,6 +22,7 @@ export class DasboardAdminComponent implements OnInit {
   peliculas: Pelicula[] = [];
   pelicula: Pelicula[] = [];
   imagen: any = "../../assets/SinImagen.jpg";
+  environment: any = environment.urlImagen;
 
 
 

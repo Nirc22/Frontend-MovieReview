@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActualizarReviewComponent } from '../actualizar-review/actualizar-review.component';
 import { Pelicula } from 'src/app/interfaces/pelicula';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -31,6 +32,8 @@ export class ReviewsUsuarioComponent implements OnInit {
 
   reviews: UsuarioReview[] =[];
   review: any;
+  environment: any = environment.urlImagen;
+
 
   constructor(private usuarioService: UsuarioService, private loginService: LoginService, private formBuilder:FormBuilder, private dialogService: DialogService, private peliculaService: PeliculaService, private matDialog: MatDialog, private router: Router) { }
 

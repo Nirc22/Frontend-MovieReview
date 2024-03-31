@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Pelicula } from 'src/app/interfaces/pelicula';
 import { PeliculaService } from 'src/app/services/pelicula/pelicula.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-pelicula',
@@ -14,6 +15,8 @@ export class PeliculaComponent implements OnInit {
   pelicula: any = [];
   rutaAnterior: string = "";
   imagen: any = "../../assets/SinImagen.jpg";
+  environment: any = environment.urlImagen;
+
 
 
   constructor(private peliculaService: PeliculaService, private router:Router, private location: Location) { }
