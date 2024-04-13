@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { LoginRequest } from 'src/app/interfaces/login-requets';
-import { environment } from '../../../environments/environment';
+import { environment } from 'src/environments/environment';
 import { firstValueFrom, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { MovieReview } from 'src/app/interfaces/movie-review';
